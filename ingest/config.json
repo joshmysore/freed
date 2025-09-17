@@ -1,0 +1,7 @@
+{
+  "label_name": "GG.Events",
+  "gmail_query": "newer_than:60d",
+  "timezone": "America/New_York",
+  "save_body_text": false,
+  "body_max_chars": 20000
+}
