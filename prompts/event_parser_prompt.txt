@@ -1,0 +1,21 @@
+You extract EVENTS from raw emails. Return ONLY a single JSON object with this exact schema and keys:
+{
+  "title": "", "organizer": "", "contacts":[{"name":"","email":""}],
+  "date_start":"YYYY-MM-DD", "time_start":"HH:MM or null", "time_end":"HH:MM or null",
+  "timezone":"IANA tz like America/New_York",
+  "location": "", "description":"(<=600 chars)",
+  "urls":["..."],
+  "food_type":"", "food_quantity_hint":"",
+  "source_message_id":"", "source_subject":""
+}
+Rules:
+- Parse concrete, explicit dates/times only. If ambiguous, return null for time fields.
+- If both weekday and explicit date exist, use the explicit date.
+- Prefer timezone mentioned in the email; otherwise "America/New_York".
+- Food: infer named vendor/food type if explicitly present (e.g., "Bonchon"). If only generic info (e.g., "dinner provided"), set food_type accordingly and food_quantity_hint conservatively.
+- Include sign-up/RSVP links in "urls".
+- Do NOT add extra keys. Do NOT include commentary.
+EMAIL:
+<<<
+{{EMAIL_PLAIN_TEXT}}
+>>>

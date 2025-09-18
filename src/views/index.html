@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Event Parser</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .events-container {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .event-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 80px;
+            margin-right: 10px;
+        }
+        
+        .detail-value {
+            color: #333;
+            flex: 1;
+        }
+        
+        .event-description {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e9ecef;
+            color: #495057;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge-food {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-link {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Email Event Parser</h1>
+        <p>Parse events from your Gmail emails using AI</p>
+    </div>
+    
+    <div class="controls">
+        <div class="form-group">
+            <label for="query">Gmail Search Query:</label>
+            <input type="text" id="query" placeholder="newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)">
+        </div>
+        
+        <div class="form-group">
+            <label for="maxResults">Max Results:</label>
+            <input type="number" id="maxResults" value="10" min="1" max="50">
+        </div>
+        
+        <button onclick="scanEvents()" id="scanBtn">Scan Emails</button>
+    </div>
+    
+    <div id="loading" class="loading hidden">
+        <p>Scanning emails and parsing events...</p>
+    </div>
+    
+    <div id="error" class="error hidden"></div>
+    <div id="success" class="success hidden"></div>
+    
+    <div id="eventsContainer" class="events-container"></div>
+
+    <script>
+        async function scanEvents() {
+            const query = document.getElementById('query').value;
+            const maxResults = document.getElementById('maxResults').value;
+            const scanBtn = document.getElementById('scanBtn');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const success = document.getElementById('success');
+            const eventsContainer = document.getElementById('eventsContainer');
+            
+            // Reset UI
+            error.classList.add('hidden');
+            success.classList.add('hidden');
+            eventsContainer.innerHTML = '';
+            scanBtn.disabled = true;
+            loading.classList.remove('hidden');
+            
+            try {
+                const response = await fetch(`/events/scan?query=${encodeURIComponent(query)}&max_results=${maxResults}`);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Failed to scan events');
+                }
+                
+                if (data.events && data.events.length > 0) {
+                    displayEvents(data.events);
+                    success.textContent = `Successfully parsed ${data.count} events!`;
+                    success.classList.remove('hidden');
+                } else {
+                    eventsContainer.innerHTML = '<p>No events found matching your query.</p>';
+                }
+                
+            } catch (err) {
+                error.textContent = `Error: ${err.message}`;
+                error.classList.remove('hidden');
+            } finally {
+                scanBtn.disabled = false;
+                loading.classList.add('hidden');
+            }
+        }
+        
+        function displayEvents(events) {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = '';
+            
+            events.forEach((event, index) => {
+                const eventCard = createEventCard(event, index);
+                container.appendChild(eventCard);
+            });
+        }
+        
+        function createEventCard(event, index) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+            
+            const timeStr = event.time_start ? 
+                `${event.time_start}${event.time_end ? ` - ${event.time_end}` : ''}` : 
+                'Time TBD';
+            
+            const location = event.location || 'Location TBD';
+            const organizer = event.organizer || 'Unknown';
+            
+            let badges = '';
+            if (event.food_type) {
+                badges += `<span class="badge badge-food">🍽️ ${event.food_type}</span>`;
+            }
+            if (event.food_quantity_hint) {
+                badges += `<span class="badge badge-food">${event.food_quantity_hint}</span>`;
+            }
+            if (event.urls && event.urls.length > 0) {
+                event.urls.forEach(url => {
+                    badges += `<span class="badge badge-link">🔗 Link</span>`;
+                });
+            }
+            
+            card.innerHTML = `
+                <div class="event-title">${event.title}</div>
+                <div class="event-details">
+                    <div class="detail-item">
+                        <div class="detail-label">📅 Date:</div>
+                        <div class="detail-value">${event.date_start}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">🕐 Time:</div>
+                        <div class="detail-value">${timeStr}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">📍 Location:</div>
+                        <div class="detail-value">${location}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">👤 Organizer:</div>
+                        <div class="detail-value">${organizer}</div>
+                    </div>
+                </div>
+                ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                ${badges ? `<div style="margin-bottom: 15px;">${badges}</div>` : ''}
+                <div class="event-actions">
+                    <button onclick="downloadICS(${index})" class="btn-secondary">📅 Download ICS</button>
+                    ${event.urls && event.urls.length > 0 ? 
+                        event.urls.map(url => `<button onclick="window.open('${url}', '_blank')" class="btn-success">🔗 Open Link</button>`).join('') : 
+                        ''
+                    }
+                </div>
+            `;
+            
+            // Store event data for ICS download
+            card.dataset.eventData = JSON.stringify(event);
+            
+            return card;
+        }
+        
+        async function downloadICS(eventIndex) {
+            const eventCard = document.querySelectorAll('.event-card')[eventIndex];
+            const eventData = JSON.parse(eventCard.dataset.eventData);
+            
+            try {
+                const response = await fetch('/ics', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(eventData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to generate ICS file');
+                }
+                
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${eventData.title.replace(/[^a-zA-Z0-9]/g, '_')}.ics`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                
+            } catch (err) {
+                alert(`Error downloading ICS file: ${err.message}`);
+            }
+        }
+        
+        // Load default query on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const defaultQuery = 'newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)';
+            document.getElementById('query').value = defaultQuery;
+        });
+    </script>
+</body>
+</html>
