@@ -151,16 +151,16 @@ class GmailClient:
         
         return emails
 
-    def get_gg_events_emails(self, max_results: int = 30) -> List[Dict[str, Any]]:
+    def get_gg_events_emails(self, max_results: int = 50) -> List[Dict[str, Any]]:
         """
-        Get emails with GG.Events tag for parsing.
+        Get emails with GG.Events tag for parsing from the last 14 days.
         
         Args:
-            max_results: Maximum number of emails to process (default 30)
+            max_results: Maximum number of emails to process (default 50)
             
         Returns:
             List of email dictionaries ready for parsing
         """
-        # Search for emails with GG.Events tag
-        query = "label:GG.Events"
+        # Search for emails with GG.Events tag from the last 14 days
+        query = "label:GG.Events newer_than:14d"
         return self.get_emails_for_parsing(query, max_results)
