@@ -1,6 +1,7 @@
 import hashlib
 import logging
-from typing import Any, Dict
+import re
+from typing import Any, Dict, Optional
 import json
 
 
@@ -104,6 +105,27 @@ def highlight_event_fields(event_data: Dict[str, Any]) -> str:
         lines.append(f"Description: {description}")
     
     return '\n'.join(lines)
+
+
+def extract_mailing_list_from_subject(subject: str) -> Optional[str]:
+    """
+    Extract mailing list name from subject line with [XXXXX] format.
+    
+    Args:
+        subject: Email subject line
+        
+    Returns:
+        Mailing list name if found, None otherwise
+    """
+    if not subject:
+        return None
+    
+    # Match [XXXXX] at the beginning of the subject
+    match = re.match(r'^\[([^\]]+)\]', subject.strip())
+    if match:
+        return match.group(1)
+    
+    return None
 
 
 def format_event_summary(events: list) -> str:

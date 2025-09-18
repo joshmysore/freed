@@ -189,6 +189,26 @@
             color: #0c5460;
         }
         
+        .badge-mailing-list {
+            background: #e2e3e5;
+            color: #383d41;
+            font-weight: 600;
+        }
+        
+        .event-card.expanded .event-description {
+            display: block;
+        }
+        
+        .event-card .event-description {
+            display: none;
+        }
+        
+        .expand-btn {
+            background: #17a2b8;
+            font-size: 0.9em;
+            padding: 8px 16px;
+        }
+        
         .error {
             background: #f8d7da;
             color: #721c24;
@@ -212,22 +232,21 @@
 </head>
 <body>
     <div class="header">
-        <h1>Email Event Parser</h1>
-        <p>Parse events from your Gmail emails using AI</p>
+        <h1>GG.Events Parser</h1>
+        <p>Parse events from GG.Events mailing list emails using AI</p>
     </div>
     
     <div class="controls">
         <div class="form-group">
-            <label for="query">Gmail Search Query:</label>
-            <input type="text" id="query" placeholder="newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)">
+            <label for="maxResults">Number of Emails to Process:</label>
+            <input type="number" id="maxResults" value="30" min="1" max="100">
         </div>
         
-        <div class="form-group">
-            <label for="maxResults">Max Results:</label>
-            <input type="number" id="maxResults" value="10" min="1" max="50">
-        </div>
-        
-        <button onclick="scanEvents()" id="scanBtn">Scan Emails</button>
+        <button onclick="scanGGEvents()" id="scanBtn">🔄 Refresh Events</button>
+        <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
+            This will process the latest GG.Events emails and extract event information. 
+            Only click when you want to refresh the data to avoid unnecessary API costs.
+        </p>
     </div>
     
     <div id="loading" class="loading hidden">
@@ -240,8 +259,9 @@
     <div id="eventsContainer" class="events-container"></div>
 
     <script>
-        async function scanEvents() {
-            const query = document.getElementById('query').value;
+        let currentEvents = [];
+        
+        async function scanGGEvents() {
             const maxResults = document.getElementById('maxResults').value;
             const scanBtn = document.getElementById('scanBtn');
             const loading = document.getElementById('loading');
@@ -257,19 +277,20 @@
             loading.classList.remove('hidden');
             
             try {
-                const response = await fetch(`/events/scan?query=${encodeURIComponent(query)}&max_results=${maxResults}`);
+                const response = await fetch(`/events/gg-events?max_results=${maxResults}`);
                 const data = await response.json();
                 
                 if (!response.ok) {
-                    throw new Error(data.detail || 'Failed to scan events');
+                    throw new Error(data.detail || 'Failed to scan GG.Events');
                 }
                 
                 if (data.events && data.events.length > 0) {
+                    currentEvents = data.events;
                     displayEvents(data.events);
-                    success.textContent = `Successfully parsed ${data.count} events!`;
+                    success.textContent = `Successfully parsed ${data.count} events from GG.Events!`;
                     success.classList.remove('hidden');
                 } else {
-                    eventsContainer.innerHTML = '<p>No events found matching your query.</p>';
+                    eventsContainer.innerHTML = '<p>No events found in GG.Events emails.</p>';
                 }
                 
             } catch (err) {
@@ -301,8 +322,12 @@
             
             const location = event.location || 'Location TBD';
             const organizer = event.organizer || 'Unknown';
+            const mailingList = event.mailing_list || 'Unknown';
             
             let badges = '';
+            if (event.mailing_list) {
+                badges += `<span class="badge badge-mailing-list">📧 ${event.mailing_list}</span>`;
+            }
             if (event.food_type) {
                 badges += `<span class="badge badge-food">🍽️ ${event.food_type}</span>`;
             }
@@ -334,11 +359,16 @@
                         <div class="detail-label">👤 Organizer:</div>
                         <div class="detail-value">${organizer}</div>
                     </div>
+                    <div class="detail-item">
+                        <div class="detail-label">📧 Mailing List:</div>
+                        <div class="detail-value">${mailingList}</div>
+                    </div>
                 </div>
                 ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
                 ${badges ? `<div style="margin-bottom: 15px;">${badges}</div>` : ''}
                 <div class="event-actions">
                     <button onclick="downloadICS(${index})" class="btn-secondary">📅 Download ICS</button>
+                    <button onclick="toggleExpand(${index})" class="expand-btn">📖 View Email</button>
                     ${event.urls && event.urls.length > 0 ? 
                         event.urls.map(url => `<button onclick="window.open('${url}', '_blank')" class="btn-success">🔗 Open Link</button>`).join('') : 
                         ''
@@ -346,10 +376,37 @@
                 </div>
             `;
             
-            // Store event data for ICS download
+            // Store event data for ICS download and expansion
             card.dataset.eventData = JSON.stringify(event);
+            card.dataset.index = index;
             
             return card;
+        }
+        
+        function toggleExpand(index) {
+            const card = document.querySelectorAll('.event-card')[index];
+            const event = currentEvents[index];
+            
+            if (card.classList.contains('expanded')) {
+                card.classList.remove('expanded');
+                return;
+            }
+            
+            // Add email content to description if not already there
+            if (event.source_subject && !card.querySelector('.email-content')) {
+                const emailContent = document.createElement('div');
+                emailContent.className = 'email-content';
+                emailContent.innerHTML = `
+                    <h4>Original Email:</h4>
+                    <p><strong>Subject:</strong> ${event.source_subject}</p>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; max-height: 300px; overflow-y: auto;">
+                        <pre style="white-space: pre-wrap; font-family: inherit; margin: 0;">${event.original_email_body || 'Email content not available'}</pre>
+                    </div>
+                `;
+                card.querySelector('.event-description').appendChild(emailContent);
+            }
+            
+            card.classList.add('expanded');
         }
         
         async function downloadICS(eventIndex) {
@@ -384,10 +441,9 @@
             }
         }
         
-        // Load default query on page load
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            const defaultQuery = 'newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)';
-            document.getElementById('query').value = defaultQuery;
+            // Page is ready, user can click refresh to load events
         });
     </script>
 </body>

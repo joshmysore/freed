@@ -49,6 +49,37 @@ For each update, include:
 
 ---
 
+## 2024-12-19 - GG.Events Integration and Mailing List Support
+
+**Summary**: Added specialized support for GG.Events mailing list emails with mailing list extraction and enhanced frontend
+
+**Affected files**:
+- `src/schema.py` - Added mailing_list and original_email_body fields
+- `src/utils.py` - Added extract_mailing_list_from_subject function
+- `src/parser_llm.py` - Updated to extract mailing list from subject lines
+- `src/gmail_client.py` - Added get_gg_events_emails method for GG.Events filtering
+- `src/app.py` - Added /events/gg-events endpoint
+- `src/views/index.html` - Complete frontend redesign for GG.Events focus
+- `.gitignore` - Added sensitive files to gitignore
+
+**Features implemented**:
+- GG.Events email filtering using Gmail labels
+- Mailing list name extraction from [XXXXX] subject format
+- Enhanced event cards with mailing list information
+- Expandable event cards to view original email content
+- Manual refresh button to control API calls and costs
+- Updated UI specifically for GG.Events workflow
+- Added original email body display functionality
+
+**Migration notes**: 
+- Frontend now defaults to GG.Events workflow instead of generic email search
+- New /events/gg-events endpoint for specialized processing
+- Mailing list information automatically extracted and displayed
+
+**Tests added**: Mailing list extraction function tested with various subject formats
+
+---
+
 ## Open Questions
 
 * None currently

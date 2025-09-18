@@ -124,6 +124,60 @@ async def scan_events(
         raise HTTPException(status_code=500, detail=f"Error scanning events: {str(e)}")
 
 
+@app.get("/events/gg-events")
+async def scan_gg_events(max_results: int = 30):
+    """
+    Scan GG.Events emails and return parsed results.
+    
+    Args:
+        max_results: Maximum number of emails to process (default 30)
+        
+    Returns:
+        List of parsed events from GG.Events
+    """
+    gmail, llm = get_components()
+    
+    if not gmail or not llm:
+        raise HTTPException(
+            status_code=500, 
+            detail="Gmail client or LLM parser not available. Check configuration."
+        )
+    
+    try:
+        # Fetch GG.Events emails
+        emails = gmail.get_gg_events_emails(max_results)
+        
+        if not emails:
+            return {"events": [], "message": "No GG.Events emails found"}
+        
+        # Parse emails
+        parsed_events = llm.parse_emails_batch(emails)
+        
+        # Post-process events
+        processed_events = []
+        for event in parsed_events:
+            processed_event = PostProcessor.process_event(event)
+            # Add original email body for display
+            processed_event.original_email_body = next(
+                (email['body'] for email in emails if email['message_id'] == event.source_message_id), 
+                'Email content not available'
+            )
+            processed_events.append(processed_event)
+        
+        # Convert to dict for JSON response
+        events_data = [event.model_dump() for event in processed_events]
+        
+        return {
+            "events": events_data,
+            "count": len(events_data),
+            "source": "GG.Events"
+        }
+        
+    except Exception as e:
+        logging.error(f"Error scanning GG.Events: {e}")
+        raise HTTPException(status_code=500, detail=f"Error scanning GG.Events: {str(e)}")
+
+
 @app.post("/ics")
 async def generate_ics(event_data: dict):
     """

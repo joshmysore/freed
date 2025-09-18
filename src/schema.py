@@ -25,6 +25,8 @@ class ParsedEvent(BaseModel):
     # source ids:
     source_message_id: Optional[str] = None
     source_subject: Optional[str] = None
+    mailing_list: Optional[str] = None  # Extracted from [XXXXX] in subject line
+    original_email_body: Optional[str] = None  # Original email content for display
 
     @field_validator("date_start")
     @classmethod

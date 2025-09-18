@@ -4,6 +4,7 @@ import logging
 from typing import Optional, Dict, Any
 from openai import OpenAI
 from schema import ParsedEvent
+from utils import extract_mailing_list_from_subject
 
 logger = logging.getLogger(__name__)
 
@@ -74,6 +75,11 @@ class LLMParser:
             # Add source information
             parsed_data['source_message_id'] = message_id
             parsed_data['source_subject'] = subject
+            
+            # Extract mailing list from subject
+            mailing_list = extract_mailing_list_from_subject(subject)
+            if mailing_list:
+                parsed_data['mailing_list'] = mailing_list
             
             # Validate with Pydantic
             try:
