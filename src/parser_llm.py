@@ -34,7 +34,7 @@ class LLMParser:
             logger.error(f"Prompt template not found at {prompt_path}")
             raise
 
-    def parse_email(self, email_content: str, message_id: str, subject: str) -> Optional[ParsedEvent]:
+    def parse_email(self, email_content: str, message_id: str, subject: str, received_at: str = None) -> Optional[ParsedEvent]:
         """
         Parse email content using LLM and return validated ParsedEvent.
         
@@ -42,34 +42,43 @@ class LLMParser:
             email_content: Plain text email content
             message_id: Gmail message ID
             subject: Email subject
+            received_at: Email received timestamp (ISO format)
             
         Returns:
             ParsedEvent object if parsing successful, None otherwise
         """
         try:
-            # Prepare prompt with email content
+            # Prepare prompt with email content and timestamp
             prompt = self.prompt_template.replace('{{EMAIL_PLAIN_TEXT}}', email_content)
+            if received_at:
+                # Replace the example timestamp with actual received_at
+                prompt = prompt.replace("RECEIVED_AT: 2025-09-18 16:48 America/New_York", f"RECEIVED_AT: {received_at}")
+                prompt = prompt.replace("RECEIVED_AT: 2025-09-18", f"RECEIVED_AT: {received_at}")
             
-            # Call OpenAI API with JSON mode
+            # Call OpenAI API (removed JSON mode to allow "DROP" responses)
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
-                response_format={"type": "json_object"},
                 temperature=0.1,  # Low temperature for consistent output
                 max_tokens=1000
             )
             
-            # Extract JSON from response
-            json_str = response.choices[0].message.content.strip()
+            # Extract response
+            response_text = response.choices[0].message.content.strip()
+            
+            # Check for DROP response
+            if response_text.strip() == '"DROP"' or response_text.strip() == 'DROP':
+                logger.info(f"Email dropped (no event): {subject}")
+                return None
             
             # Parse JSON
             try:
-                parsed_data = json.loads(json_str)
+                parsed_data = json.loads(response_text)
             except json.JSONDecodeError as e:
                 logger.error(f"Failed to parse JSON from LLM response: {e}")
-                logger.error(f"Raw response: {json_str}")
+                logger.error(f"Raw response: {response_text}")
                 return None
             
             # Add source information
@@ -175,7 +184,8 @@ class LLMParser:
             event = self.parse_email(
                 email_content=email['body'],
                 message_id=email['message_id'],
-                subject=email['subject']
+                subject=email['subject'],
+                received_at=email.get('date')  # Pass the email date as received_at
             )
             if event:
                 parsed_events.append(event)
