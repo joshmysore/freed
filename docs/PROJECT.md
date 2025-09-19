@@ -55,7 +55,7 @@ Create a minimal, reliable pipeline that:
 * Google APIs (`google-api-python-client`, `google-auth`, `google-auth-oauthlib`)
 * Pydantic v2
 * HTML sanitization: `beautifulsoup4`
-* LLM SDK: leave pluggable (`OPENAI_API_KEY` env var; call JSON-mode/function-mode)
+* LLM SDK: Harvard OpenAI API integration (`OPENAI_API_KEY` env var; Harvard gateway endpoint)
 * Tests: `pytest`
 
 ## Gmail scopes & search
@@ -198,7 +198,7 @@ EMAIL:
   * `GOOGLE_CLIENT_ID=`
   * `GOOGLE_CLIENT_SECRET=`
   * `GOOGLE_PROJECT_ID=`
-  * `OPENAI_API_KEY=`
+  * `OPENAI_API_KEY=` (Harvard Community Developers API key)
   * `GMAIL_QUERY=newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)`
   * `DEFAULT_TIMEZONE=America/New_York`
 * README: explain OAuth steps, token storage, and how to obtain Gmail creds.
@@ -214,12 +214,16 @@ EMAIL:
 
 ## Roadmap
 
-* **Phase 0 (MVP – current)**
+* **Phase 0 (MVP – COMPLETED)**
 
-  * Gmail read-only polling
-  * LLM JSON parse with validation
-  * Basic highlight view
-  * ICS export
+  * ✅ Gmail read-only polling
+  * ✅ LLM JSON parse with validation (Harvard OpenAI API)
+  * ✅ Basic highlight view
+  * ✅ ICS export
+  * ✅ GG.Events specialized parsing
+  * ✅ Mailing list extraction and tagging
+  * ✅ Web interface with event cards
+  * ✅ Harvard OpenAI API integration ($10/month credits)
 * **Phase 1**
 
   * Frontend site (Next.js or keep FastAPI templates) listing events; per-event page

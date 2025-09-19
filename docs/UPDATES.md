@@ -125,6 +125,40 @@ For each update, include:
 
 ---
 
+## 2025-09-19 - Harvard OpenAI API Integration
+
+**Summary**: Successfully integrated Harvard's OpenAI Community Developers API with $10/month credits
+
+**Affected files**:
+- `src/parser_llm.py` - Updated to use Harvard API gateway endpoint
+- `env.example` - Updated with Harvard API key configuration
+- `.env` - Created with Harvard API key
+- `README.md` - Updated with Harvard API setup instructions
+- `docs/README.md` - Updated with current system status
+
+**Features implemented**:
+- Harvard OpenAI API gateway integration (`https://go.apis.huit.harvard.edu/ais-openai-direct-limited-schools/v1`)
+- GPT-4o-mini model usage with Harvard credits
+- Proper API key configuration and environment setup
+- Updated documentation with Harvard API setup instructions
+- Verified API connection and email parsing functionality
+
+**Technical details**:
+- Base URL: `https://go.apis.huit.harvard.edu/ais-openai-direct-limited-schools/v1`
+- Model: `gpt-4o-mini` (cost-effective for parsing tasks)
+- Authentication: `api-key` header as required by Harvard gateway
+- Credits: $10/month provided by Harvard for community developers
+- Streaming: Not supported (as per Harvard API limitations)
+
+**Migration notes**: 
+- Existing code was already configured for Harvard API gateway
+- No breaking changes to existing functionality
+- API key now uses Harvard's community developers program
+
+**Tests added**: API connection test verified successful integration
+
+---
+
 ## Open Questions
 
 * Consider improving LLM prompt for better event detection

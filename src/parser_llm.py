@@ -1,10 +1,12 @@
 import os
 import json
 import logging
-from typing import Optional, Dict, Any
+import re
+from typing import Optional, Dict, Any, List
 from openai import OpenAI
 from schema import ParsedEvent
 from utils import extract_mailing_list_from_subject
+from url_utils import normalize_urls
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +35,47 @@ class LLMParser:
         except FileNotFoundError:
             logger.error(f"Prompt template not found at {prompt_path}")
             raise
+
+    def _normalize_parsed_data(self, parsed_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Normalize parsed data before validation.
+        
+        Args:
+            parsed_data: Raw parsed data from LLM
+            
+        Returns:
+            Normalized data
+        """
+        # Normalize URLs
+        if 'urls' in parsed_data:
+            parsed_data['urls'] = normalize_urls(parsed_data.get('urls', []))
+        
+        # Map placeholders to None
+        placeholders = {"", "TBD", "N/A", "-", "null", "NULL"}
+        
+        for key in ['organizer', 'location', 'description', 'food_type', 'food_quantity_hint']:
+            if key in parsed_data and parsed_data[key] in placeholders:
+                parsed_data[key] = None
+        
+        # Clean up contact information
+        if 'contacts' in parsed_data:
+            for contact in parsed_data.get('contacts', []):
+                if isinstance(contact, dict):
+                    for field in ['name', 'email']:
+                        if field in contact and contact[field] in placeholders:
+                            contact[field] = None
+        
+        # Strip exotic dashes and collapse whitespace
+        for key in ['title', 'description', 'location']:
+            if key in parsed_data and parsed_data[key]:
+                text = str(parsed_data[key])
+                # Replace fancy dashes
+                text = re.sub(r'[–—]', '-', text)
+                # Collapse repeated spaces
+                text = re.sub(r'\s+', ' ', text).strip()
+                parsed_data[key] = text
+        
+        return parsed_data
 
     def parse_email(self, email_content: str, message_id: str, subject: str, received_at: str = None) -> Optional[ParsedEvent]:
         """
@@ -89,6 +132,9 @@ class LLMParser:
             mailing_list = extract_mailing_list_from_subject(subject)
             if mailing_list:
                 parsed_data['mailing_list'] = mailing_list
+            
+            # Normalize data before validation
+            parsed_data = self._normalize_parsed_data(parsed_data)
             
             # Validate with Pydantic
             try:
@@ -190,6 +236,7 @@ class LLMParser:
             if event:
                 parsed_events.append(event)
             else:
-                logger.warning(f"Failed to parse email: {email.get('subject', 'Unknown')}")
+                # Don't log as warning for intentional drops - they're already logged as INFO
+                pass
         
         return parsed_events

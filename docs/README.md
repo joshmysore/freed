@@ -12,7 +12,7 @@ This directory contains comprehensive documentation for the GG.Events Email Pars
 
 1. **Setup**: Follow the main README.md in the project root
 2. **Configuration**: Set up Gmail OAuth and Harvard OpenAI API credentials
-3. **Usage**: Run `python src/app.py` and visit `http://localhost:8000`
+3. **Usage**: Run `python -m uvicorn src.app:app --host 0.0.0.0 --port 8080 --reload` and visit `http://localhost:8080`
 4. **GG.Events**: Click "Refresh Events" to parse your GG.Events emails
 
 ## 📊 System Performance
@@ -40,10 +40,11 @@ This directory contains comprehensive documentation for the GG.Events Email Pars
    - Mailing list extraction
 
 2. **LLM Parser** (`src/parser_llm.py`)
-   - Harvard OpenAI API integration
+   - Harvard OpenAI API integration (GPT-4o-mini)
    - Event extraction from email content
    - JSON schema validation
    - Mailing list tagging
+   - Harvard API gateway configuration
 
 3. **Post-Processor** (`src/postprocess.py`)
    - Time normalization
@@ -60,7 +61,8 @@ This directory contains comprehensive documentation for the GG.Events Email Pars
 ### API Endpoints
 - `GET /` - Main web interface
 - `GET /health` - System health check
-- `GET /events/gg-events` - Parse GG.Events emails
+- `GET /events/scan` - Parse general event emails
+- `GET /events/gg-events` - Parse GG.Events emails specifically
 - `POST /ics` - Generate calendar files
 
 ## 📈 Parsing Analysis

@@ -125,12 +125,13 @@ async def scan_events(
 
 
 @app.get("/events/gg-events")
-async def scan_gg_events(max_results: int = 30):
+async def scan_gg_events(max_results: int = 50, sort: str = "desc"):
     """
     Scan GG.Events emails and return parsed results.
     
     Args:
-        max_results: Maximum number of emails to process (default 30)
+        max_results: Maximum number of emails to process (default 50)
+        sort: Sort order - "desc" for newest first, "asc" for oldest first
         
     Returns:
         List of parsed events from GG.Events
@@ -166,6 +167,17 @@ async def scan_gg_events(max_results: int = 30):
         
         # Convert to dict for JSON response
         events_data = [event.model_dump() for event in processed_events]
+        
+        # Sort events by date_start, then by time_start
+        def sort_key(event):
+            date = event.get('date_start', '')
+            time = event.get('time_start', '')
+            return (date, time or '23:59')  # Put null times at end
+        
+        if sort == "desc":
+            events_data.sort(key=sort_key, reverse=True)
+        else:
+            events_data.sort(key=sort_key)
         
         return {
             "events": events_data,
