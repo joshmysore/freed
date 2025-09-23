@@ -1,0 +1,32 @@
+{
+  "categories": [
+    "workshop",
+    "lecture",
+    "meeting",
+    "concert",
+    "social",
+    "seminar",
+    "talk",
+    "presentation",
+    "conference",
+    "gathering"
+  ],
+  "cuisines": [
+    "American",
+    "Chinese",
+    "Indian",
+    "Italian",
+    "Japanese",
+    "Korean",
+    "Mexican",
+    "Thai",
+    "Taiwanese",
+    "Mediterranean"
+  ],
+  "event_window_days": 14,
+  "max_llm_calls_per_run": 10,
+  "min_confidence": {
+    "category": 0.6,
+    "cuisine": 0.6
+  }
+}

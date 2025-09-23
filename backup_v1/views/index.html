@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GG.Events Parser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+        
+        .btn-secondary:hover {
+            background: #e9ecef;
+            color: #495057;
+        }
+        
+        .btn-food {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-food:hover {
+            background: #059669;
+        }
+        
+        .btn-food.active {
+            background: #047857;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .status.loading {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+        
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+        
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        
+        .events-container {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .date-group {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .date-header {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            font-weight: 600;
+            color: #374151;
+            font-size: 1.1rem;
+        }
+        
+        .event-card {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            background: #f8fafc;
+        }
+        
+        .event-card:last-child {
+            border-bottom: none;
+        }
+        
+        .event-card.expanded {
+            background: #f8fafc;
+        }
+        
+        .event-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .event-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 8px;
+            flex: 1;
+        }
+        
+        .event-time {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .event-location {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .event-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .badge-food {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-mailing-list {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .badge-url {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .event-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .event-card.expanded .event-details {
+            display: block;
+        }
+        
+        .detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+        
+        .detail-value {
+            color: #6b7280;
+        }
+        
+        .urls {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .url-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .url-link:hover {
+            text-decoration: underline;
+        }
+        
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-email {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .expand-icon {
+            transition: transform 0.2s;
+            margin-left: auto;
+        }
+        
+        .event-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GG.Events Parser</h1>
+            <p>Parse events from GG.Events mailing list emails using AI</p>
+        </div>
+        
+        <div class="controls">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="maxResults">Number of Emails to Process:</label>
+                    <input type="number" id="maxResults" value="50" min="1" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dateFilter">Filter by Date:</label>
+                    <input type="date" id="dateFilter" placeholder="Select date to filter">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mailingListFilter">Filter by Mailing List:</label>
+                    <select id="mailingListFilter">
+                        <option value="">All Mailing Lists</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button onclick="loadEvents()" id="loadBtn" class="btn btn-primary">🔄 Load Events</button>
+                <button onclick="toggleFoodFilter()" id="foodBtn" class="btn btn-food">🍕 Food Only</button>
+                <button onclick="clearFilters()" id="clearBtn" class="btn btn-secondary">🗑️ Clear Filters</button>
+            </div>
+            
+            <p style="margin-top: 15px; color: #6b7280; font-size: 0.9rem;">
+                This will process the latest GG.Events emails and extract event information. 
+                Only click when you want to refresh the data to avoid unnecessary API costs.
+            </p>
+        </div>
+        
+        <div id="status" class="status hidden"></div>
+        
+        <div id="eventsContainer" class="events-container"></div>
+    </div>
+
+    <script>
+        let allEvents = [];
+        let filteredEvents = [];
+        let foodFilterActive = false;
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEvents();
+            setupEventListeners();
+        });
+        
+        function setupEventListeners() {
+            document.getElementById('dateFilter').addEventListener('change', applyFilters);
+            document.getElementById('mailingListFilter').addEventListener('change', applyFilters);
+        }
+        
+        async function loadEvents() {
+            const maxResults = document.getElementById('maxResults').value;
+            const loadBtn = document.getElementById('loadBtn');
+            const status = document.getElementById('status');
+            const eventsContainer = document.getElementById('eventsContainer');
+            
+            // Reset UI
+            status.className = 'status hidden';
+            eventsContainer.innerHTML = '';
+            loadBtn.disabled = true;
+            loadBtn.textContent = '⏳ Loading...';
+            
+            try {
+                const response = await fetch(`/events/gg-events?max_results=${maxResults}&sort=desc`);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Failed to load events');
+                }
+                
+                if (data.events && data.events.length > 0) {
+                    allEvents = data.events;
+                    filteredEvents = allEvents;
+                    updateMailingListFilter();
+                    applyFilters();
+                    showStatus(`Successfully loaded ${data.count} events from GG.Events!`, 'success');
+                } else {
+                    showStatus('No events found in GG.Events emails.', 'error');
+                }
+                
+            } catch (err) {
+                showStatus(`Error: ${err.message}`, 'error');
+            } finally {
+                loadBtn.disabled = false;
+                loadBtn.textContent = '🔄 Load Events';
+            }
+        }
+        
+        function updateMailingListFilter() {
+            const mailingListFilter = document.getElementById('mailingListFilter');
+            const mailingLists = [...new Set(allEvents.map(event => event.mailing_list).filter(Boolean))];
+            
+            // Clear existing options except "All Mailing Lists"
+            mailingListFilter.innerHTML = '<option value="">All Mailing Lists</option>';
+            
+            // Add mailing list options
+            mailingLists.forEach(list => {
+                const option = document.createElement('option');
+                option.value = list;
+                option.textContent = list;
+                mailingListFilter.appendChild(option);
+            });
+        }
+        
+        function applyFilters() {
+            const dateFilter = document.getElementById('dateFilter').value;
+            const mailingListFilter = document.getElementById('mailingListFilter').value;
+            
+            let filtered = allEvents;
+            
+            // Filter by date
+            if (dateFilter) {
+                filtered = filtered.filter(event => event.date_start === dateFilter);
+            }
+            
+            // Filter by mailing list
+            if (mailingListFilter) {
+                filtered = filtered.filter(event => event.mailing_list === mailingListFilter);
+            }
+            
+            // Filter by food
+            if (foodFilterActive) {
+                filtered = filtered.filter(event => hasFood(event));
+            }
+            
+            filteredEvents = filtered;
+            displayEvents();
+        }
+        
+        function hasFood(event) {
+            // Check food_type and food_quantity_hint
+            if (event.food_type || event.food_quantity_hint) {
+                return true;
+            }
+            
+            // Check description for food keywords
+            const foodKeywords = /(pizza|snack|snacks|food|lunch|dinner|breakfast|refreshments|cater(ed|ing)|bagels?|coffee|tea|chai|cookies?)/i;
+            return foodKeywords.test(event.description || '');
+        }
+        
+        function toggleFoodFilter() {
+            const foodBtn = document.getElementById('foodBtn');
+            foodFilterActive = !foodFilterActive;
+            
+            if (foodFilterActive) {
+                foodBtn.classList.add('active');
+                foodBtn.textContent = '🍕 Food Only ✓';
+            } else {
+                foodBtn.classList.remove('active');
+                foodBtn.textContent = '🍕 Food Only';
+            }
+            
+            applyFilters();
+        }
+        
+        function clearFilters() {
+            document.getElementById('dateFilter').value = '';
+            document.getElementById('mailingListFilter').value = '';
+            foodFilterActive = false;
+            document.getElementById('foodBtn').classList.remove('active');
+            document.getElementById('foodBtn').textContent = '🍕 Food Only';
+            
+            filteredEvents = allEvents;
+            displayEvents();
+            
+            if (allEvents.length > 0) {
+                showStatus(`Showing all ${allEvents.length} events`, 'success');
+            }
+        }
+        
+        function displayEvents() {
+            const container = document.getElementById('eventsContainer');
+            
+            if (filteredEvents.length === 0) {
+                container.innerHTML = '<div class="empty">No events match the current filters.</div>';
+                return;
+            }
+            
+            // Group events by date
+            const groupedEvents = groupEventsByDate(filteredEvents);
+            
+            // Sort dates
+            const sortedDates = Object.keys(groupedEvents).sort();
+            
+            container.innerHTML = sortedDates.map(date => {
+                const events = groupedEvents[date];
+                // Sort events within each date by time
+                events.sort((a, b) => {
+                    const timeA = a.time_start || '23:59';
+                    const timeB = b.time_start || '23:59';
+                    return timeA.localeCompare(timeB);
+                });
+                
+                return `
+                    <div class="date-group">
+                        <div class="date-header">${formatDate(date)}</div>
+                        ${events.map(event => createEventCard(event)).join('')}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function groupEventsByDate(events) {
+            return events.reduce((groups, event) => {
+                const date = event.date_start;
+                if (!groups[date]) {
+                    groups[date] = [];
+                }
+                groups[date].push(event);
+                return groups;
+            }, {});
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            if (dateString === today.toISOString().split('T')[0]) {
+                return 'Today';
+            } else if (dateString === tomorrow.toISOString().split('T')[0]) {
+                return 'Tomorrow';
+            } else {
+                return date.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            }
+        }
+        
+        function createEventCard(event) {
+            const timeStr = formatTimeRange(event.time_start, event.time_end);
+            const badges = createBadges(event);
+            
+            return `
+                <div class="event-card" onclick="toggleEvent(this)" data-event-id="${event.source_message_id}">
+                    <div class="event-header">
+                        <div class="event-title">${event.title}</div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="event-time">${timeStr}</div>
+                    <div class="event-location">${event.location || 'Location TBD'}</div>
+                    ${badges ? `<div class="event-badges">${badges}</div>` : ''}
+                    <div class="event-details">
+                        ${createEventDetails(event)}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function formatTimeRange(timeStart, timeEnd) {
+            if (!timeStart) return 'Time TBD';
+            if (!timeEnd) return timeStart;
+            return `${timeStart} - ${timeEnd}`;
+        }
+        
+        function createBadges(event) {
+            const badges = [];
+            
+            if (hasFood(event)) {
+                badges.push('<span class="badge badge-food">🍕 Food</span>');
+            }
+            
+            if (event.mailing_list) {
+                badges.push(`<span class="badge badge-mailing-list">📧 ${event.mailing_list}</span>`);
+            }
+            
+            if (event.urls && event.urls.length > 0) {
+                badges.push(`<span class="badge badge-url">🔗 ${event.urls.length} link(s)</span>`);
+            }
+            
+            return badges.join('');
+        }
+        
+        function createEventDetails(event) {
+            let details = '';
+            
+            if (event.description) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Description:</div>
+                        <div class="detail-value">${event.description}</div>
+                    </div>
+                `;
+            }
+            
+            if (event.organizer) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Organizer:</div>
+                        <div class="detail-value">${event.organizer}</div>
+                    </div>
+                `;
+            }
+            
+            if (event.contacts && event.contacts.length > 0) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Contacts:</div>
+                        <div class="contacts">
+                            ${event.contacts.map(contact => `
+                                <div class="contact">
+                                    <span>${contact.name || 'Unknown'}</span>
+                                    ${contact.email ? `<a href="mailto:${contact.email}" class="contact-email">${contact.email}</a>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (event.urls && event.urls.length > 0) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Links:</div>
+                        <div class="urls">
+                            ${event.urls.map(url => `
+                                <a href="${normalizeUrl(url)}" target="_blank" class="url-link">${url}</a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (event.mailing_list) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Mailing List:</div>
+                        <div class="detail-value">${event.mailing_list}</div>
+                    </div>
+                `;
+            }
+            
+            if (event.source_subject) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Original Subject:</div>
+                        <div class="detail-value">${event.source_subject}</div>
+                    </div>
+                `;
+            }
+            
+            return details;
+        }
+        
+        function normalizeUrl(url) {
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                return url;
+            }
+            return `https://${url}`;
+        }
+        
+        function toggleEvent(card) {
+            card.classList.toggle('expanded');
+        }
+        
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2267 @@
+{
+  "learned_aliases": {
+    "mochi donuts": {
+      "last_cuisine": "Japanese",
+      "rolling_confidence": 0.9861587127989999,
+      "sample_count": 12,
+      "last_updated": "2025-09-19T17:18:52.395391"
+    },
+    "ten one boba": {
+      "last_cuisine": "Taiwanese",
+      "rolling_confidence": 0.9861587127989999,
+      "sample_count": 12,
+      "last_updated": "2025-09-19T17:18:52.396226"
+    },
+    "boba": {
+      "last_cuisine": "Taiwanese",
+      "rolling_confidence": 0.8823509999999999,
+      "sample_count": 6,
+      "last_updated": "2025-09-19T17:18:52.394786"
+    },
+    "bonchon": {
+      "last_cuisine": "Korean",
+      "rolling_confidence": 0.657,
+      "sample_count": 3,
+      "last_updated": "2025-09-19T17:18:52.396992"
+    }
+  },
+  "llm_cache": {
+    "1995db7362583f38_d5c6567a5137e2cc": {
+      "response": {
+        "title": "Kempner All Hands Meeting",
+        "description": "The Kempner All Hands meeting is an internal research meeting featuring talks from members of the Kempner community. Presentations discuss recent work and include time for a brief Q&A.",
+        "date_start": "2025-09-18",
+        "time_start": "15:30",
+        "time_end": "17:00",
+        "location": "Harvard Science & Engineering Complex, 150 Western Ave, Allston, Boston MA 02134, Room 6.242",
+        "organizer": null,
+        "mailing_list": "Kempner All Hands Meeting",
+        "urls": [
+          "https://groups.google.com/a/g.harvard.edu/d/msgid/kempner-all-hands/BY5PR07MB7142BC4610267E9CA0B82D61C916A%40BY5PR07MB7142.namprd07.prod.outlook.com"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1995db7362583f38",
+        "source_subject": "Kempner All Hands Meeting: Hadas Orgad, Thomas Fel"
+      },
+      "timestamp": "2025-09-19T16:13:49.282281"
+    },
+    "1995db68a34f71cb_42ab8fa2669edfe9": {
+      "response": {
+        "title": "Kempner All Hands Meeting",
+        "description": "The Kempner All Hands meeting is an internal research meeting featuring talks from members of the Kempner community. Presentations discuss recent work and include time for a brief Q&A.",
+        "date_start": "2025-09-18",
+        "time_start": "15:30",
+        "time_end": "17:00",
+        "location": "Harvard Science & Engineering Complex, 150 Western Ave, Allston, Boston MA 02134, Room 6.242",
+        "organizer": null,
+        "mailing_list": "Kempner All Hands Meeting",
+        "urls": [
+          "https://groups.google.com/a/g.harvard.edu/d/msgid/kempner-all-hands/BY5PR07MB7142DE4E6E440046CBAAFD44C916A%40BY5PR07MB7142.namprd07.prod.outlook.com"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 1.0,
+          "cuisine": null,
+          "overall": 1.0
+        },
+        "source_message_id": "1995db68a34f71cb",
+        "source_subject": "Kempner All Hands Meeting: Naomi Saphra, Rajan Lab"
+      },
+      "timestamp": "2025-09-19T16:13:55.017381"
+    },
+    "1995a2e49124f783_68e392a802d6ebbd": {
+      "response": {
+        "title": "Resume Review Table",
+        "description": null,
+        "date_start": "2025-09-17",
+        "time_start": "21:00",
+        "time_end": "22:00",
+        "location": "upper d-hall",
+        "organizer": "Larissa J. Senatus",
+        "mailing_list": "PFOHO",
+        "urls": [],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1995a2e49124f783",
+        "source_subject": "[PFOHO] Resume Review Table *9-10 Tonight!"
+      },
+      "timestamp": "2025-09-19T16:14:54.490945"
+    },
+    "199598d6317aab96_3ee268adc665448b": {
+      "response": {
+        "title": "Info Session for Program for Scientifically-Inspired Leadership",
+        "description": "Interested students are strongly encouraged to attend the info session on September 18th from 4:00-5:00 pm at the CPB-MCB undergraduate office.",
+        "date_start": "2025-09-18",
+        "time_start": "16:00",
+        "time_end": "17:00",
+        "location": "CPB-MCB undergraduate office",
+        "organizer": "Dr. Dominic Mao and Dr. Andrea Wright",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://docs.google.com/forms/d/e/1FAIpQLSdZMVA-mLqcJW7ugrfF2VAP5YStCIobTJk6PUrzFMJHnyknWA/viewform?usp=sf_link",
+          "https://www.google.com/maps/place/CPB-MCB+undergraduate+office/@42.3770887,-71.1149495,15z/data=!4m2!3m1!1s0x0:0x4fc0158e98a1ea04?sa=X&ved=2ahUKEwj84vSEoP2BAxVlhYkEHVNLDl4Q_BJ6BAhPEAA&ved=2ahUKEwj84vSEoP2BAxVlhYkEHVNLDl4Q_BJ6BAhWEAM",
+          "https://docs.google.com/forms/d/e/1FAIpQLSdFR-b__Xp-4sn8d0Ks8FbO-cmK1v3Acpo69hJj3Qj8GR2yGQ/viewform?usp=header"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199598d6317aab96",
+        "source_subject": "[Pfoho-open] APPLY NOW- Wintersession Opportunity- Program for Scientifically-Inspired Leadership in India"
+      },
+      "timestamp": "2025-09-19T16:15:02.914392"
+    },
+    "19959558a58d5d8c_c18ed3cbc54c1c6e": {
+      "response": {
+        "title": "Improv Auditions Day 2",
+        "description": "On Thin Ice, Harvard's only short-form improv group, is holding auditions this Tuesday-Thursday in Farkas 303. Our auditions are entirely open to anyone, regardless of class year or experience! Come anytime from 7-9pm for a ~20 minute audition time slot.",
+        "date_start": "2025-09-18",
+        "time_start": "19:00",
+        "time_end": "21:00",
+        "location": "Farkas 303",
+        "organizer": "On Thin Ice",
+        "mailing_list": "FAP 28",
+        "urls": [
+          "https://groups.google.com/d/msgid/fap-28/CAA-rfdUWxF1gqKaMiwxyKV6LQNi095pee%3Da%2BH_eni87iaERhxA%40mail.gmail.com"
+        ],
+        "category": "gathering",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19959558a58d5d8c",
+        "source_subject": "Fwd: IMPROV AUDITIONS DAY 2!!!!!"
+      },
+      "timestamp": "2025-09-19T16:15:07.674118"
+    },
+    "19959162717efde4_bd080eef8c4dfd37": {
+      "response": {
+        "title": "Computer Science Colloquium Series",
+        "description": null,
+        "date_start": "2025-09-25",
+        "time_start": "14:30",
+        "time_end": null,
+        "location": "SEC LL2.224",
+        "organizer": null,
+        "mailing_list": "cs-undergrads",
+        "urls": [
+          "https://events.seas.harvard.edu/event/do-llms-understand-how-would-we-know-if-they-did-does-it-matter",
+          "https://groups.google.com/a/seas.harvard.edu/d/msgid/cs-undergrads/CAKaeu13gTovxuw6vCku5ox1BPV8FR85uTXCisbnuLKCGmSFv4g%40mail.gmail.com"
+        ],
+        "category": "lecture",
+        "food": [
+          {
+            "name": "refreshments",
+            "quantity_hint": "before the talk",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.5,
+          "overall": 0.8
+        },
+        "source_message_id": "19959162717efde4",
+        "source_subject": "[cs-undergrads] Thursday 9/25 - Computer Science Colloquium Series at 2:30pm in SEC LL2.224"
+      },
+      "timestamp": "2025-09-19T16:15:12.949669"
+    },
+    "19958fd1e8a81a6e_666768113584affb": {
+      "response": {
+        "title": "Tempus Meeting",
+        "description": "If you would like to learn more about Tempus or are interested in getting involved, please join us at our meeting.",
+        "date_start": "2025-09-19",
+        "time_start": "15:00",
+        "time_end": null,
+        "location": "Lower Library in Robinson Hall",
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://www.tempustheharvardcollegehistoryreview.com/current-issue",
+          "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.tempustheharvardcollegehistoryreview.com_current-2Dissue&d=DwMFaQ&c=WO-RGvefibhHBZq3fL85hQ&r=kNzEsWGXTOq8N4zm-evQYowtDqxursAsRRLqYyhv5vA&m=N3SwGe3AujjDI2ijLwJU46r-ZCNtPLRynJVcAsxZwqDJFqeGY-jW38Lmq4VvIRS5&s=iSPLHqxQ1f36E9lXyG2ZX4tu9ztfiKovaG3f7eFJCNw&e="
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19958fd1e8a81a6e",
+        "source_subject": "[Pfoho-open] Publish your History Writing! Submit to the Tempus!"
+      },
+      "timestamp": "2025-09-19T16:15:19.695537"
+    },
+    "199578d1544f0be9_e9d1df1982b25e3b": {
+      "response": {
+        "title": "Announcement of Class of 2028 Representatives",
+        "description": "Results of the midterm special elections for Class of 2028 Representatives.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "PfoHo HoCo",
+        "mailing_list": "PFOHO",
+        "urls": [
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7",
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7",
+          "https://sites.google.com/view/pfoho-hoco/home",
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "199578d1544f0be9",
+        "source_subject": "[PFOHO] NEW Class of 2028 Representatives"
+      },
+      "timestamp": "2025-09-19T16:40:10.489651"
+    },
+    "19955de510f4efd1_159074e73b18898e": {
+      "response": {
+        "title": "HoCo Meeting Notes",
+        "description": null,
+        "date_start": "2025-09-16",
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Pforzheimer House Committee",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://docs.google.com/document/d/1hSoNDpr4Cbrm9PS6i1IP8MCCsFfbpwXMmSg-FETm9FA/edit?usp=sharing",
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7",
+          "https://sites.google.com/view/pfoho-hoco/home",
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 1.0,
+          "cuisine": null,
+          "overall": 1.0
+        },
+        "source_message_id": "19955de510f4efd1",
+        "source_subject": "[Pfoho-open] HoCo Meeting Notes 9/16"
+      },
+      "timestamp": "2025-09-19T16:40:15.511224"
+    },
+    "19955c33334e9dbd_d22448bb00d1bff4": {
+      "response": {
+        "title": "Comp Harvard Alternative Investment! [9/18 Kickoff]",
+        "description": "Interested in Private Equity, Hedge Funds, Private Credit, Crypto, Real Assets, etc.? Want to work directly with leading alternative investment firms throughout the semester? Comp Harvard Alternative Investment (HAI)! HAI is the only student organization on campus that is dedicated to the full range of alternative investments and offers semester-long internships to our members. Our mission is to equip all interested students with the knowledge and experience necessary to thrive in today's finance world. Our members have the opportunity to work on semester-long projects with leading private equity firms, as well as attend speaker events, professional development workshops, and club socials.",
+        "date_start": "2025-09-18",
+        "time_start": "19:00",
+        "time_end": null,
+        "location": "Sever 202",
+        "organizer": "HAI Board",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/Ew77YzFRRwwXUMZ68",
+          "https://www.harvardaltinvest.org/"
+        ],
+        "category": "workshop",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19955c33334e9dbd",
+        "source_subject": "Fwd: [hcs-discuss] Comp Harvard Alternative Investment! [9/18 Kickoff]"
+      },
+      "timestamp": "2025-09-19T16:40:21.507107"
+    },
+    "1995a93e2415e890_9d68f52a4a287c15": {
+      "response": {
+        "title": "De La Rose Concert",
+        "description": "Support a great Puerto Rican artist!",
+        "date_start": "2025-09-17",
+        "time_start": "20:30",
+        "time_end": null,
+        "location": "Big Night Live",
+        "organizer": "Sophia Roach",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://www.linkedin.com/in/sophia-roach-17029620b/"
+        ],
+        "category": "concert",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1995a93e2415e890",
+        "source_subject": "[Pfoho-open] Fwd: de la rose tn -- $35 tickets!!"
+      },
+      "timestamp": "2025-09-19T17:18:43.952491"
+    },
+    "199588fa37acee71_de7dcfbdd8fddbd7": {
+      "response": {
+        "title": "CS Nights",
+        "description": "Come to the Winthrop Dining Hall from 8-10 on Wednesdays for Computer Science Community. Office hours for CS 61, CS 1200, and CS 1820 will be happening, but everyone is welcome.",
+        "date_start": "2025-09-17",
+        "time_start": "20:00",
+        "time_end": "22:00",
+        "location": "Winthrop Dining Hall",
+        "organizer": "Beth Musser",
+        "mailing_list": "cs-undergrads",
+        "urls": [
+          "https://groups.google.com/a/seas.harvard.edu/d/msgid/cs-undergrads/MN2PR07MB66087881DFCDCD99E47B82139A17A%40MN2PR07MB6608.namprd07.prod.outlook.com"
+        ],
+        "category": "gathering",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199588fa37acee71",
+        "source_subject": "[cs-undergrads] CS Nights! Wednesdays at 8pm in Winthrop"
+      },
+      "timestamp": "2025-09-19T17:18:52.390968"
+    },
+    "1996359a2788fac7_534dad99fb91e467": {
+      "response": {
+        "title": "Student Ticket Distribution for Harvard vs Brown",
+        "description": "Don't miss the biggest student tailgate of the year and get your tickets to Harvard Football's Home Opener!",
+        "date_start": "2025-09-13",
+        "time_start": "14:00",
+        "time_end": null,
+        "location": "Cambridge Queen's Head, 45 Quincy St, Cambridge, MA",
+        "organizer": "Harvard Athletics",
+        "mailing_list": "CrimZone",
+        "urls": [
+          "https://gocrimson.com/sports/2025/6/27/football-home-opener.aspx?utm_medium=email&elq_cid=133831&RSRC=Email&RDAT=1564&aid=16035&pid=harvard_email_eloqua&rid=1564&ehash=97b425dd84636ca6fe631c3a7486a38f92d2d266e8a47c2e4a574deffd4ca436&elqTrackId=743197D11F48E4E6FC75FFA0E2620AC1&elq=37aeb05ec9644c9aa6477e4957c5fba6&elqaid=1564&elqat=1&elqCampaignId=1239&elqak=8AF5EAA2F0679522BC2227006606C763260CE799B83263F8F79E74D63C1E179FCB57"
+        ],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996359a2788fac7",
+        "source_subject": "Student Ticket Distribution for Harvard vs Brown \ud83c\udfc8"
+      },
+      "timestamp": "2025-09-19T17:21:20.607580"
+    },
+    "199634d598e013d0_284cd77c82a7263b": {
+      "response": {
+        "title": "Shabbat Dinner",
+        "description": "Appetizers will be served at 7:30, and Shabbat Dinner will be at 7:45.",
+        "date_start": "2025-09-19",
+        "time_start": "19:45",
+        "time_end": null,
+        "location": "Harvard Hillel, 52 Mount Auburn Street, Rosovsky Hall, Cambridge, MA 02138, US",
+        "organizer": "Sarah Silverman",
+        "mailing_list": "Hillel",
+        "urls": [],
+        "category": "social",
+        "food": [
+          {
+            "name": "appetizers",
+            "quantity_hint": null,
+            "cuisine": null
+          },
+          {
+            "name": "Shabbat Dinner",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "199634d598e013d0",
+        "source_subject": "Shabbat! 09/19/2025"
+      },
+      "timestamp": "2025-09-19T17:28:21.989881"
+    },
+    "19963236d35f2670_c371dbc352cf8bdb": {
+      "response": {
+        "title": "2026 Class Committee Marshal announcement",
+        "description": "Please join us in welcoming your 2026 Class Committee Marshals!",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "John Prince AB \u201913",
+        "mailing_list": "Class of 2026",
+        "urls": [
+          "https://view.hu.harvard.edu/?qs=83f8dbe21a5ce6497b98df880680a629cfa3d913fb05260e647d4ec31c9e18d2c415b01fa1fcbcdad6d6bf3c5b2c9c9a260a92606870de366852a8d9700ef837609f15291ed9035f268d48acc50670b8",
+          "https://click.hu.harvard.edu/?qs=5390352ef03f5c0baaf6589b411d48ddba4f51b176edb74a0e174ed3273d1401c2effe8769a1395f1b498a76bd2ee3d22cc7fccf29cf1e75",
+          "mailto:haa_collegealumniprograms@harvard.edu?subject=haa_collegealumniprograms@harvard.edu",
+          "https://click.hu.harvard.edu/?qs=5390352ef03f5c0bbd2ae4ed552615b2e559176f452513c6e7607059058b75b80f4480d00cdee557da6859663ad5f327e7ede989bfe2b384"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19963236d35f2670",
+        "source_subject": "2026 Class Committee Marshal announcement"
+      },
+      "timestamp": "2025-09-19T17:28:29.365192"
+    },
+    "199630df2dfb4d2b_b964943988bd5a96": {
+      "response": {
+        "title": "Retreat",
+        "description": "The retreat is overnight and spans from Saturday to Sunday.",
+        "date_start": "2025-09-20",
+        "time_start": "07:30",
+        "time_end": null,
+        "location": "OFA Building, 74 Mt Auburn Street",
+        "organizer": "Jake Truncale",
+        "mailing_list": "Hgc-list",
+        "urls": [
+          "http://list.harvardgleeclub.org/listinfo.cgi/hgc-list-harvardgleeclub.org"
+        ],
+        "category": "gathering",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199630df2dfb4d2b",
+        "source_subject": "Re: [Hgc-list] Retreat Info!"
+      },
+      "timestamp": "2025-09-19T17:28:33.048104"
+    },
+    "19962d9e3f116921_96dd3c6209c04f0c": {
+      "response": {
+        "title": "Retreat",
+        "description": null,
+        "date_start": "2025-09-20",
+        "time_start": "07:30",
+        "time_end": null,
+        "location": "Holden",
+        "organizer": "Jake",
+        "mailing_list": "hgc-list",
+        "urls": [
+          "http://list.harvardgleeclub.org/listinfo.cgi/hgc-list-harvardgleeclub.org"
+        ],
+        "category": "gathering",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        }
+      },
+      "timestamp": "2025-09-19T17:28:35.713880"
+    },
+    "1996e17247a13f71_4a7c0595d48e5d58": {
+      "response": {
+        "title": "Auditor Election",
+        "description": "Election for the position of Auditor within the IRC.",
+        "date_start": "2025-09-28",
+        "time_start": "18:00",
+        "time_end": null,
+        "location": "Boylston 103",
+        "organizer": "Alice Yang",
+        "mailing_list": "HIRC",
+        "urls": [
+          "https://forms.gle/jqAK3s85oNmo4MjY8",
+          "https://docs.google.com/document/d/1pPkltRfsp_QSUVUAIuZGwc74X_2X91_a9HqxD2-DIUg/edit?usp=sharing",
+          "https://docs.google.com/document/d/1A8RGK1D-Rp6-v1WbwEedae1a_LMIbSwmCr1xx6K_LDk/edit?usp=sharing",
+          "https://www.instagram.com/harvardirc/",
+          "https://web.facebook.com/WelcomeToTheIRC/",
+          "https://www.harvardirc.org/irc-welcome-week-and-msc/"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996e17247a13f71",
+        "source_subject": "Re: [HIRC] Auditor Election and Co-Response Director Application"
+      },
+      "timestamp": "2025-09-21T17:48:43.660605"
+    },
+    "1996e02171e191db_5d674feeac042530": {
+      "response": {
+        "title": "Patel Fellow Booking",
+        "description": "Yes, if we could cover questions about coding in general & being more comfortable doing so, and also figuring out how to take notes specifically for this class. If we could also do an overview of bits, bytes, hexadecimal, and bitwise arithmetic that would be great. I also have questions about pset 1 that I hope we can talk through.",
+        "date_start": "2025-09-21",
+        "time_start": "16:00",
+        "time_end": "17:00",
+        "location": "We can text and find space once you sign up. Please put your phone number in additional info.",
+        "organizer": "Josh Mysore",
+        "mailing_list": "samanthagiles@college.harvard.edu",
+        "urls": [
+          "https://calendly.com/cancellations/b366b29f-fe2f-4021-bb9a-92cbf86794b4",
+          "https://calendly.com/reschedulings/b366b29f-fe2f-4021-bb9a-92cbf86794b4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996e02171e191db",
+        "source_subject": "Re: Samantha GIles and Josh Mysore"
+      },
+      "timestamp": "2025-09-21T17:49:30.438000"
+    },
+    "1996ddd9a53b87fd_9e86705409c3f1b9": {
+      "response": {
+        "title": "Patel Fellow Booking",
+        "description": "Do you have the link for the zoom? Yes, if we could cover questions about coding in general & being more comfortable doing so, and also figuring out how to take notes specifically for this class. If we could also do an overview of bits, bytes, hexadecimal, and bitwise arithmetic that would be great. I also have questions about pset 1 that I hope we can talk through.",
+        "date_start": "2025-09-21",
+        "time_start": "16:00",
+        "time_end": "17:00",
+        "location": "We can text and find space once you sign up. Please put your phone number in additional info.",
+        "organizer": "Josh Mysore",
+        "mailing_list": null,
+        "urls": [
+          "https://calendly.com/cancellations/b366b29f-fe2f-4021-bb9a-92cbf86794b4",
+          "https://calendly.com/reschedulings/b366b29f-fe2f-4021-bb9a-92cbf86794b4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996ddd9a53b87fd",
+        "source_subject": "Re: Samantha GIles and Josh Mysore"
+      },
+      "timestamp": "2025-09-21T17:49:43.585859"
+    },
+    "1996ddbe00390f67_7ea7f0327a003b90": {
+      "response": {
+        "title": "Patel Fellow Booking",
+        "description": "Do you have the link for the zoom? If we could cover questions about coding in general & being more comfortable doing so, and also figuring out how to take notes specifically for this class. If we could also do an overview of bits, bytes, hexadecimal, and bitwise arithmetic that would be great. I also have questions about pset 1 that I hope we can talk through.",
+        "date_start": "2025-09-21",
+        "time_start": "16:00",
+        "time_end": "17:00",
+        "location": "We can text and find space once you sign up. Please put your phone number in additional info.",
+        "organizer": "Josh Mysore",
+        "mailing_list": null,
+        "urls": [
+          "https://calendly.com/cancellations/b366b29f-fe2f-4021-bb9a-92cbf86794b4",
+          "https://calendly.com/reschedulings/b366b29f-fe2f-4021-bb9a-92cbf86794b4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996ddbe00390f67",
+        "source_subject": "Re: Samantha GIles and Josh Mysore"
+      },
+      "timestamp": "2025-09-21T17:49:49.426581"
+    },
+    "1996ddb037b80566_aa93a63ecf53e7f5": {
+      "response": {
+        "title": "Patel Fellow Booking",
+        "description": "In prep for our meeting today, could you send me some information on what you would like to cover? Just so I can get an idea. I'll have to Zoom and will send you a link.",
+        "date_start": "2025-09-21",
+        "time_start": "16:00",
+        "time_end": "17:00",
+        "location": "We can text and find space once you sign up. Please put your phone number in additional info.",
+        "organizer": "Josh Mysore",
+        "mailing_list": "Samantha GIles and Josh Mysore",
+        "urls": [
+          "https://calendly.com/cancellations/b366b29f-fe2f-4021-bb9a-92cbf86794b4",
+          "https://calendly.com/reschedulings/b366b29f-fe2f-4021-bb9a-92cbf86794b4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996ddb037b80566",
+        "source_subject": "Re: Samantha GIles and Josh Mysore"
+      },
+      "timestamp": "2025-09-21T17:49:54.049192"
+    },
+    "1996dccc56aa3dc2_c287c55b84af4d03": {
+      "response": {
+        "title": "Patel Fellow Booking",
+        "description": "Just would love help / support / guidance on CS61 and CS1200. More specifically CS61!",
+        "date_start": "2025-09-21",
+        "time_start": "15:00",
+        "time_end": "16:00",
+        "location": "We can text and find space once you sign up. Please put your phone number in additional info.",
+        "organizer": "Josh Mysore",
+        "mailing_list": null,
+        "urls": [
+          "https://calendly.com/cancellations/b83af4c0-c756-4b58-98a7-104163daa1d0",
+          "https://calendly.com/reschedulings/b83af4c0-c756-4b58-98a7-104163daa1d0"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996dccc56aa3dc2",
+        "source_subject": "Re: Faisal Younus and Josh Mysore"
+      },
+      "timestamp": "2025-09-21T17:49:58.416632"
+    },
+    "1996d68ed796cb28_6d3c9f5e5f246ea6": {
+      "response": {
+        "title": "Auditor Election",
+        "description": "The position of Auditor is currently empty within the IRC. This position is part of the six positions that lead the Corporation, are elected and overseen by the Board of Directors, and are registered officers of our 501(c)(3). They play a critical role in making sure the organization runs smoothly and continues to grow.",
+        "date_start": "2025-09-28",
+        "time_start": "18:00",
+        "time_end": null,
+        "location": "Boylston 103",
+        "organizer": "Alice Yang",
+        "mailing_list": "HIRC",
+        "urls": [
+          "https://forms.gle/jqAK3s85oNmo4MjY8",
+          "https://docs.google.com/document/d/1pPkltRfsp_QSUVUAIuZGwc74X_2X91_a9HqxD2-DIUg/edit?usp=sharing",
+          "https://www.instagram.com/harvardirc/",
+          "https://web.facebook.com/WelcomeToTheIRC/",
+          "https://www.harvardirc.org/irc-welcome-week-and-msc/"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996d68ed796cb28",
+        "source_subject": "[HIRC] Auditor Election and Co-Response Director Application"
+      },
+      "timestamp": "2025-09-21T17:50:03.448609"
+    },
+    "199625098bea6e6d_eeff832521ad09b1": {
+      "response": {
+        "title": "Applying to STEM PhD Programs",
+        "description": "The webinar will be led by Harvard Physics professor, Dr. Vinny Manoharan, and is open to all students interested in applying to or learning more about STEM PhD programs.",
+        "date_start": "2025-10-08",
+        "time_start": "17:30",
+        "time_end": null,
+        "location": "Zoom",
+        "organizer": "Office for Belonging, Engagement, and Community",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "http://tinyurl.com/phd-apps"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199625098bea6e6d",
+        "source_subject": "[hcs-discuss] [Attend] Applying to STEM PhD Programs"
+      },
+      "timestamp": "2025-09-21T17:56:01.563684"
+    },
+    "1996250956da890b_1d652353bdd4f7ad": {
+      "response": {
+        "title": "2027 Asset Management & Insurance Summer Intern Recruiting",
+        "description": "KKR is starting the recruiting process for 2027 Summer Analysts across their New York, Menlo Park, and San Francisco offices.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": "New York, Menlo Park, San Francisco",
+        "organizer": "KKR",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://www.kkr.com/careers/student-careers/student-career-opportunities/post?gh_jid=5639024004"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996250956da890b",
+        "source_subject": "[hcs-discuss] KKR 2027 Summer Analyst Program"
+      },
+      "timestamp": "2025-09-21T17:56:05.745272"
+    },
+    "199623658254de23_a75d549eda29b008": {
+      "response": {
+        "title": "FREE FLOUR COFFEE!!!!",
+        "description": null,
+        "date_start": "2025-09-19",
+        "time_start": null,
+        "time_end": "12:00",
+        "location": "Flour Bakery",
+        "organizer": "Gabrielle Medina",
+        "mailing_list": "hrdc-discussion",
+        "urls": [
+          "https://groups.google.com/a/lists.hrdctheater.org/d/msgid/hrdc-discussion/CAOwTdxgbEg9aJ%3DbAAAcOycfq4U2LLxazgB%2B_4Vt2Jx%3DLH_yzyQ%40mail.gmail.com"
+        ],
+        "category": "social",
+        "food": [
+          {
+            "name": "coffee",
+            "quantity_hint": "free",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": 0.0,
+          "overall": 0.7
+        },
+        "source_message_id": "199623658254de23",
+        "source_subject": "FREE FLOUR COFFEE!!!!"
+      },
+      "timestamp": "2025-09-21T17:56:10.149390"
+    },
+    "1996e45a3779f286_c00882442be9d435": {
+      "response": {
+        "title": "FREE VIP PRE-SCREENING OF WARNER BROTHERS\u2019 ONE BATTLE AFTER ANOTHER",
+        "description": "A Harvard-exclusive pre-screening of Leonardo DiCaprio\u2019s new movie.",
+        "date_start": "2025-09-22",
+        "time_start": "19:30",
+        "time_end": null,
+        "location": "Coolidge Corner Theatre, 290 Harvard St, Brookline, MA 02446",
+        "organizer": "Gabby Medina",
+        "mailing_list": "LAST CHANCE",
+        "urls": [
+          "https://wbtickets.com/movie_landing/SEFSVkFSRFdCVQ%3D%3D"
+        ],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996e45a3779f286",
+        "source_subject": "Fwd: [LAST CHANCE] FREE ADVANCED LEONARDO DICAPRIO MOVIE SCREENING TOMORROW!!!!"
+      },
+      "timestamp": "2025-09-21T17:58:38.424861"
+    },
+    "19968099a3b5b837_2c1e1bc82becc14c": {
+      "response": {
+        "title": "Request for a short meeting on Ayurveda\u2019s contemporary revival",
+        "description": "A conversation to discuss current priorities for standardization, training, and accreditation in Ayurveda, interface with mental health care, evidence frameworks, and impacts of commercialization.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": "Cambridge, MA",
+        "organizer": "Josh Mysore",
+        "mailing_list": null,
+        "urls": [],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.8
+        }
+      },
+      "timestamp": "2025-09-21T17:58:45.932590"
+    },
+    "1995f9aea57d971a_2f8617db5cf6e0e1": {
+      "response": {
+        "title": "JOIN GLOBAL ALLIANCE FOR MEDICAL INNOVATION",
+        "description": "The mission of GAMI is to develop and implement accessible and socially impactful medical technologies for low resourced healthcare settings globally.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "GAMI: Global Alliance for Medical Innovation",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/gx2YU29Y2caTAWhPA",
+          "harvardgami.com"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "1995f9aea57d971a",
+        "source_subject": "[hcs-discuss] [GAMI] JOIN GLOBAL ALLIANCE FOR MEDICAL INNOVATION"
+      },
+      "timestamp": "2025-09-21T18:11:35.444205"
+    },
+    "1995f9adf228b4ce_556804c8844b1b65": {
+      "response": {
+        "title": "Intro to Figma Workshop",
+        "description": "You are invited to the first official Figma workshop of the semester, where you will learn the basics of Figma and create a customized dorm room poster from scratch! We\u2019ll also help you set up your free Figma Education plan so you can keep designing with premium features after the workshop. Please bring your laptops!",
+        "date_start": "2025-09-24",
+        "time_start": "18:00",
+        "time_end": "19:00",
+        "location": "Harvard Hall 101",
+        "organizer": "Crystal Manyloun, Angela Yang, Andy Dieu, Christine Zhang",
+        "mailing_list": "PFOHO",
+        "urls": [
+          "https://luma.com/s2t7k559"
+        ],
+        "category": "workshop",
+        "food": [
+          {
+            "name": "mochi donuts",
+            "quantity_hint": null,
+            "cuisine": "Japanese"
+          },
+          {
+            "name": "Ten One boba",
+            "quantity_hint": null,
+            "cuisine": "Taiwanese"
+          }
+        ],
+        "confidence": {
+          "category": 1.0,
+          "cuisine": 1.0,
+          "overall": 1.0
+        },
+        "source_message_id": "1995f9adf228b4ce",
+        "source_subject": "[PFOHO] [hrcsa-talk] [hcs-discuss] RSVP for Intro to Figma Workshop - Mochi Donuts and Boba \ud83e\uddcb\u2728"
+      },
+      "timestamp": "2025-09-21T18:11:40.200024"
+    },
+    "1995e8971e6081e7_79bd26ce1fd52cbd": {
+      "response": {
+        "title": "First Meeting of Fall 2025",
+        "description": "Come to our first meeting of the year this Friday, 9/19 at 2:00PM in Sever Hall 103! We have free boba!",
+        "date_start": "2025-09-19",
+        "time_start": "14:00",
+        "time_end": null,
+        "location": "Sever Hall 103",
+        "organizer": "Harvard Undergraduate Japan Initiative (HUJI) Committee",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://forms.gle/3LgzepSgG9J2hX7P9"
+        ],
+        "category": "meeting",
+        "food": [
+          {
+            "name": "boba",
+            "quantity_hint": null,
+            "cuisine": "Taiwanese"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.8,
+          "overall": 0.85
+        },
+        "source_message_id": "1995e8971e6081e7",
+        "source_subject": "[Pfoho-open] [HUJI} First Meeting of Fall 2025!, 9/19 2PM at SEVER 103! FREE BOBA!"
+      },
+      "timestamp": "2025-09-21T18:11:44.237597"
+    },
+    "1995e5ebccc48d45_0e634c78e50a635c": {
+      "response": {
+        "title": "Intro to Figma Workshop",
+        "description": "You will learn the basics of Figma and create a customized dorm room poster from scratch. We\u2019ll also help you set up your free Figma Education plan so you can keep designing with premium features after the workshop.",
+        "date_start": "2025-09-24",
+        "time_start": "18:00",
+        "time_end": "19:00",
+        "location": "Harvard Hall 101",
+        "organizer": "Crystal Manyloun, Angela Yang, Andy Dieu, Christine Zhang",
+        "mailing_list": "FAP 28",
+        "urls": [
+          "https://luma.com/s2t7k559",
+          "https://groups.google.com/d/msgid/fap-28/CACCLqnRuMD7fhXbEjLefYnfixGZ274wn%2Bhec01Rpx7XDsQEtGQ%40mail.gmail.com"
+        ],
+        "category": "workshop",
+        "food": [
+          {
+            "name": "mochi donuts",
+            "quantity_hint": null,
+            "cuisine": "Japanese"
+          },
+          {
+            "name": "Ten One boba",
+            "quantity_hint": null,
+            "cuisine": "Taiwanese"
+          }
+        ],
+        "confidence": {
+          "category": 1.0,
+          "cuisine": 0.8,
+          "overall": 1.0
+        },
+        "source_message_id": "1995e5ebccc48d45",
+        "source_subject": "RSVP for Intro to Figma Workshop - Mochi Donuts and Boba \ud83e\uddcb\u2728"
+      },
+      "timestamp": "2025-09-21T18:11:49.827278"
+    },
+    "1995e48ecfbb5b06_3ef3458f6ed8ea8f": {
+      "response": {
+        "title": "Join Our Startup: Barry & Bonna Publishing LLC",
+        "description": "We are currently expanding our team and looking for fellow changemakers who are excited to build with us.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Kadija and Asantewa",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://forms.gle/xa574apKXVy5jsVp9"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "1995e48ecfbb5b06",
+        "source_subject": "[Pfoho-open] Fwd: Join Our Startup: Barry & Bonna Publishing LLC"
+      },
+      "timestamp": "2025-09-21T18:11:52.954708"
+    },
+    "1995d3344415c640_8cdc09941a2b480d": {
+      "response": {
+        "title": "Presentation on Expert Systems",
+        "description": "Discussion on Expert Systems and student presentations.",
+        "date_start": "2025-09-22",
+        "time_start": "12:45",
+        "time_end": null,
+        "location": null,
+        "organizer": "Talha Rehman",
+        "mailing_list": "COMPSCI 2821R",
+        "urls": [],
+        "category": "presentation",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1995d3344415c640",
+        "source_subject": "Re: COMPSCI 2821R: Presentation on Expert Systems \u2013 Monday, September 22 at 12:45 PM"
+      },
+      "timestamp": "2025-09-21T18:11:55.821293"
+    },
+    "1995d1da0b4a8902_8133257e2f9dd9d4": {
+      "response": {
+        "title": "2025 Fall Comp ReCompute",
+        "description": "Join HCS affiliate ReCompute\u2019s 2025 Fall Comp, which starts on Sunday 9/28! ReCompute is a collective dedicated to critically examining and improving structures for responsible tech use.",
+        "date_start": "2025-09-28",
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Karina Chung",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://harvard-recompute.github.io/",
+          "https://forms.gle/XDsBurQwcdR8qfea7"
+        ],
+        "category": "meeting",
+        "food": [
+          {
+            "name": "snacks",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "1995d1da0b4a8902",
+        "source_subject": "[hcs-discuss] Interested in Responsible Tech? Comp ReCompute!!"
+      },
+      "timestamp": "2025-09-21T18:12:00.020430"
+    },
+    "1995d1d4e168da80_73f8c101beb84ffd": {
+      "response": {
+        "title": "HUMIC Intro Session",
+        "description": "The Harvard Undergraduate Machine Intelligence Community (HUMIC) invites you to our Intro Session.",
+        "date_start": "2025-09-19",
+        "time_start": "17:00",
+        "time_end": "18:00",
+        "location": "Sever Hall 203",
+        "organizer": "HUMIC Board",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://docs.google.com/forms/d/e/1FAIpQLSfuBvFMc06Bs8oHheEex5bzu67krD6mLYdr-A8lmaC6vhzH9Q/viewform?usp=sf_link"
+        ],
+        "category": "gathering",
+        "food": [
+          {
+            "name": "Bonchon",
+            "quantity_hint": "snacks",
+            "cuisine": "Korean"
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": 0.9,
+          "overall": 0.85
+        },
+        "source_message_id": "1995d1d4e168da80",
+        "source_subject": "[hcs-discuss] Fwd: HUMIC Intro Session This Friday [DINNER PROVIDED]"
+      },
+      "timestamp": "2025-09-21T18:12:04.975744"
+    },
+    "1995ab48d510a0a2_b2adfa19c8b23cd1": {
+      "response": {
+        "title": "Launch Meeting of the Student-Tutor Sustainability Committee",
+        "description": "Brainstorm ideas for how to improve sustainability in Pfoho, divide and conquer to implement concrete plans this year, prioritize spending!",
+        "date_start": "2025-09-21",
+        "time_start": "18:00",
+        "time_end": "19:00",
+        "location": "Holmes Heritage Room",
+        "organizer": "Pfoho Student-Tutor Sustainability Committee",
+        "mailing_list": "PFOHO",
+        "urls": [],
+        "category": "meeting",
+        "food": [
+          {
+            "name": "snacks",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.5,
+          "overall": 0.8
+        },
+        "source_message_id": "1995ab48d510a0a2",
+        "source_subject": "[PFOHO] \ud83c\udf0e \u267b\ufe0f Launch Mtg Sun Sept 21, 6-7 PM - Pfoho Student-Tutor Sustainability Committee \ud83c\udf0e \u267b\ufe0f"
+      },
+      "timestamp": "2025-09-21T18:16:28.125591"
+    },
+    "1995ab3508ae34ff_fa56d12997186aa7": {
+      "response": {
+        "title": "FREE FOOD + PHILOSOPHY LECTURE EVENT",
+        "description": null,
+        "date_start": "2025-09-18",
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "pfoho-open@lists.fas.harvard.edu",
+        "urls": [],
+        "category": "lecture",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        }
+      },
+      "timestamp": "2025-09-21T18:16:31.043759"
+    },
+    "19976724981bc0e0_fa56d12997186aa7": {
+      "response": {
+        "title": "Hear from the ACLU National President at PBHA\u2019s Robert Coles Award Lecture!",
+        "description": null,
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "lecture",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19976724981bc0e0",
+        "source_subject": "[Pfoho-open] Hear from the ACLU National President at PBHA\u2019s Robert Coles Award Lecture!"
+      },
+      "timestamp": "2025-09-23T10:51:42.656750"
+    },
+    "199754aead89f653_c0a2dd485483579b": {
+      "response": {
+        "title": "Mental Programs in Humans and Machines",
+        "description": "Consider experimenting to learn how to use a new appliance, webpage, or toy: Within tens of minutes, we can learn how something new works, and use that knowledge to achieve novel goals, make sense of similar devices, and communicate our new knowledge in natural language. How could an AI system similarly acquire, transfer, and communicate its knowledge of how things work? To make progress on this question, we study cognitive models and AI systems which represent knowledge as symbolic \u201cprograms\u201d written in Python, natural language, and/or logic.I present results suggesting that encoding knowledge in natural language better explains human learning than representing knowledge in a bespoke formal language, but that LLMs on their own are insufficient: Instead, extra probabilistic machinery is needed to explain human inductive reasoning. Then, I present AI systems which expand on this insight by generating programs to explain their observations, focusing on agents which program world models to describe how new things work, with applications in program synthesis and robotics. Last I compare symbolic programs against purely neural representations, including in-context learning and its extensions, finding that neither strictly dominates the other, and instead that they play complementary roles in inductive reasoning.",
+        "date_start": "2025-09-26",
+        "time_start": "14:30",
+        "time_end": "16:00",
+        "location": "SEC, Room: LL2.224",
+        "organizer": "Vincent",
+        "mailing_list": "CNUGS",
+        "urls": [
+          "https://kempnerinstitute.harvard.edu/events/kevin-ellis/"
+        ],
+        "category": "lecture",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199754aead89f653",
+        "source_subject": "[CNUGS] Kempner Lecture on Mental Programs this Friday"
+      },
+      "timestamp": "2025-09-23T10:51:53.060227"
+    },
+    "1997473f10587878_0d8191fa0d7e92c0": {
+      "response": {
+        "title": "Google Resume Workshop & Review Session",
+        "description": null,
+        "date_start": "2025-09-24",
+        "time_start": "17:30",
+        "time_end": "19:30",
+        "location": "MCS (54 Dunster Street)",
+        "organizer": "Meaghan Shea",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://careerservices.fas.harvard.edu/events/2025/09/24/google-resume-workshop-review-session/"
+        ],
+        "category": "workshop",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1997473f10587878",
+        "source_subject": "[hcs-discuss] Fwd: Happening this Week-- Google Resume Workshop (9/24), AI & Data Career Panel (9/25), and Tech Science & Data Career Fair (9/26)"
+      },
+      "timestamp": "2025-09-23T10:51:59.033302"
+    },
+    "19973c8f913edf2a_182fd93438292865": {
+      "response": {
+        "title": "Applying to STEM PhD Programs 101",
+        "description": "This Zoom-based workshop, led by Dr. Vinothan N. Manoharan, is designed for students interested in applying to PhD programs in STEM fields. Over a 60-minute live session, we\u2019ll demystify the application process by walking participants through key components such as, transcripts, research-focused CVs, statements of purpose, personal statements, and letters of recommendation. By the end of the workshop, attendees will leave with tools to personalize their application journey and craft a compelling graduate application.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Lizette Ortega, M.S.",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "http://www.seas.harvard.edu/office-diversity-inclusion-and-belonging",
+          "https://forms.gle/oRjDsy7VvVSAJ6Tq7",
+          "https://sites.google.com/view/pfoho-hoco/home"
+        ],
+        "category": "workshop",
+        "food": [],
+        "confidence": {
+          "category": 1.0,
+          "cuisine": null,
+          "overall": 1.0
+        },
+        "source_message_id": "19973c8f913edf2a",
+        "source_subject": "[Pfoho-open] Fwd: STEM PhD Webinar"
+      },
+      "timestamp": "2025-09-23T10:52:08.593406"
+    },
+    "19972de9c15b2416_6a4da8ba4b6fcf4c": {
+      "response": {
+        "title": "Computer Science Colloquium Series",
+        "description": null,
+        "date_start": "2025-09-25",
+        "time_start": "14:30",
+        "time_end": null,
+        "location": "SEC LL2.224",
+        "organizer": "Kim LaSpina",
+        "mailing_list": "cs-undergrads",
+        "urls": [
+          "https://events.seas.harvard.edu/event/do-llms-understand-how-would-we-know-if-they-did-does-it-matter",
+          "https://groups.google.com/a/seas.harvard.edu/d/msgid/cs-undergrads/CAKaeu12%2Bc9sAjak3_tGYM-xkdCCsQsHf9F-%2BBufgnp%2BqgKy8aw%40mail.gmail.com"
+        ],
+        "category": "lecture",
+        "food": [
+          {
+            "name": "refreshments",
+            "quantity_hint": "before the talk",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.5,
+          "overall": 0.8
+        },
+        "source_message_id": "19972de9c15b2416",
+        "source_subject": "[cs-undergrads] Thursday 9/25 - Computer Science Colloquium Series at 2:30pm in SEC LL2.224"
+      },
+      "timestamp": "2025-09-23T10:52:20.337384"
+    },
+    "199729e45196f66e_a0f8f98984ea8253": {
+      "response": {
+        "title": "Presentation on Expert Systems",
+        "description": "You are scheduled to present on Expert Systems at 12:45 PM on Wednesday (September 24).",
+        "date_start": "2025-09-24",
+        "time_start": "12:45",
+        "time_end": null,
+        "location": null,
+        "organizer": "Talha Rehman",
+        "mailing_list": "COMPSCI 2821R",
+        "urls": [],
+        "category": "presentation",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199729e45196f66e",
+        "source_subject": "\u7b54\u590d: COMPSCI 2821R: Presentation on Expert Systems \u2013 Monday, September 22 at 12:45 PM"
+      },
+      "timestamp": "2025-09-23T10:52:25.349772"
+    },
+    "1997298de9a9c9a6_14ede68ef01ea98b": {
+      "response": {
+        "title": "Presentation on Expert Systems",
+        "description": "You are scheduled to present on Expert Systems at 12:45 PM on Wednesday (September 24).",
+        "date_start": "2025-09-22",
+        "time_start": "12:45",
+        "time_end": null,
+        "location": null,
+        "organizer": "Talha Rehman",
+        "mailing_list": "COMPSCI 2821R",
+        "urls": [],
+        "category": "presentation",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1997298de9a9c9a6",
+        "source_subject": "Re: COMPSCI 2821R: Presentation on Expert Systems \u2013 Monday, September 22 at 12:45 PM"
+      },
+      "timestamp": "2025-09-23T10:52:30.297794"
+    },
+    "199720747d2d3903_ce74db4246f249af": {
+      "response": {
+        "title": "Info Session with Sutter Hill Ventures",
+        "description": "Join us for an information session on the Codepoint Fellowship program with Sutter Hill Ventures. Team members from SHV and alumni of the program will be presenting, and exclusive Sutter Hill Ventures merchandise and boba will be provided!",
+        "date_start": "2025-09-26",
+        "time_start": "13:00",
+        "time_end": "14:00",
+        "location": "Sever 102",
+        "organizer": "Karina & Mohamed",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/FhJccBZrDW3vdrvY8"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "boba",
+            "quantity_hint": null,
+            "cuisine": "Taiwanese"
+          },
+          {
+            "name": "merch",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.8,
+          "overall": 0.85
+        },
+        "source_message_id": "199720747d2d3903",
+        "source_subject": "[hcs-discuss] Re: [FREE MERCH + BOBA] HCS x Sutter Hill Ventures - Sept 26th!!"
+      },
+      "timestamp": "2025-09-23T10:52:39.173342"
+    },
+    "19971f918ab34d21_5ca70e0e9a233fb4": {
+      "response": {
+        "title": "CBS seminar by Blaise Ag\u00fcera y Arcas",
+        "description": "Symbiogenesis and computational parallelism in brain evolution",
+        "date_start": "2025-09-23",
+        "time_start": "12:00",
+        "time_end": null,
+        "location": "NW 243",
+        "organizer": "Center for Brain Science",
+        "mailing_list": "CNUGS",
+        "urls": [
+          "https://lists.fas.harvard.edu/mailman/listinfo/cbs",
+          "https://cbs.fas.harvard.edu/home/events/"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "coffee and cookies",
+            "quantity_hint": "available at 11:45 a.m.",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.85
+        },
+        "source_message_id": "19971f918ab34d21",
+        "source_subject": "[CNUGS] FW: CBS Events This Week"
+      },
+      "timestamp": "2025-09-23T10:52:46.240991"
+    },
+    "19971f2e691fc878_79d89b4bee60c85c": {
+      "response": {
+        "title": "Decagon x HCS Tech Talk & Networking Event",
+        "description": "Join us for a Tech Talk and Networking event featuring Harvard alum Amy Jin and Cynthia Chen as they share more about what they're building at Decagon.",
+        "date_start": "2025-10-06",
+        "time_start": "17:00",
+        "time_end": "18:00",
+        "location": "Harvard campus (location TBA soon)",
+        "organizer": "HCS",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://luma.com/jiwqp84b",
+          "https://decagon.ai/",
+          "https://www.linkedin.com/in/ayjin/",
+          "https://www.linkedin.com/in/chen-cynthia/",
+          "https://jobs.ashbyhq.com/decagon/2a435dd5-1212-42bb-ae5a-d7432902acd2",
+          "https://jobs.ashbyhq.com/decagon/aa9c9d2a-aba9-429e-bf91-8303247fbcd6"
+        ],
+        "category": "talk",
+        "food": [
+          {
+            "name": "light bites",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.5,
+          "overall": 0.8
+        },
+        "source_message_id": "19971f2e691fc878",
+        "source_subject": "[hcs-discuss] Decagon x HCS Tech Talk & Networking Event on 10/6"
+      },
+      "timestamp": "2025-09-23T10:52:55.877242"
+    },
+    "19976ea66e5dfae2_297f2d294e57779c": {
+      "response": {
+        "title": "Future Labs Live USA 2025",
+        "description": "Over thousands of laboratory professionals will gather to learn, network and discover the latest innovations transforming lab operations.",
+        "date_start": "2025-10-15",
+        "time_start": null,
+        "time_end": null,
+        "location": "Pennsylvania Convention Center, Philadelphia",
+        "organizer": "Terrapinn",
+        "mailing_list": null,
+        "urls": [
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e67e1f189744910c25b62c14da7bc3ab2bf9177700ecae3552e72c66acf7e030fdb4e329744056ebf1c56704f2c7f5fc3ca72dde6bc6ce7428",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e65bdd8811105e403d5872985e7b947931192f1585539cbc61a6cdcb15356cc88eb23acac276a38ec6033f3792deb02d1673edb1348af1175f",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e6b53bf715d8c0bd1884ec17667b0947c0280a6c635a3be0ff6e5dd6473b9ea682571a7e7f691b766c97ac1d81fa75afb4db6a35ae29354183",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e6dc12a694d6b1fbc9e338f3a4e03c4b685ad2ad637167aca76b7c99d708aa12af867f9621d24c7ead589765ee7853e167b44a01340aa9e1b5",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e68f94e4e016eedb4400d2c8b45e9008ed0855dc4efe340fc639b4a2902daf0e2bb300a0e8b2fc7b82f8402cc1b7324168bb4c62cb5e7f7746",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e6db3967523c4a3541aabe237de83953223c6073efb62f0db1f2fc1ce8cf06f0cc2bcf597ac162e1e4c7ff1caa072674c71aa1537fc24902ae",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e6cdb6ba52f4ead6e021e678ba1cbf3e4f877c3baedd4deba7e6d8c630877029dbddfc2176894ff2cb589919e40c38ae4dfd257c516d8c0d85",
+          "https://click.tp2.terrapinn.com/?qs=2117b71313d452e67c79e9d19e8576eaaab2fd19214d327c220ea3557740a9cc7ff1bfa9fb80d09c8806eaa3aaa87f1989439c200dc83d6159d797ae8db61038"
+        ],
+        "category": "conference",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19976ea66e5dfae2",
+        "source_subject": "\u23f0 Just 3 Weeks Left! Have You Secured Your Pass?"
+      },
+      "timestamp": "2025-09-23T10:53:42.350254"
+    },
+    "19976e539d45e2aa_c9bbfaa7f2d3c62c": {
+      "response": {
+        "title": "Health Policy in America: A Look at the Current State of Play at HHS and the CDC",
+        "description": "Join us for lunch with Dawn O\u2019Connell, former Assistant Secretary of Health and Human Services (HHS) for Preparedness and Response, and Rochelle Walensky, former Director of the Centers for Disease Control and Prevention (CDC), as they discuss the nation\u2019s health infrastructure and the current state of play at both HHS and the CDC \u2014 what does it all mean for the future of medical research, vaccines, public health preparedness, and so much more.",
+        "date_start": "2025-09-29",
+        "time_start": "12:00",
+        "time_end": null,
+        "location": "Littauer 166, 79 JFK Street, Cambridge",
+        "organizer": "Institute of Politics, Harvard Kennedy School",
+        "mailing_list": "Special Event",
+        "urls": [
+          "https://click.comms.hks.harvard.edu/?qs=608b0fbce8a7631944cc2c8444c0bb1fe2329ef5f9a8f17d7a3c9eded43ed72c0e81f3070d6be45fb2b109f5ad795bfa6dff6e8dd85a5950d24df7b31b527e50",
+          "https://view.comms.hks.harvard.edu/?qs=29319d924582bd3cd67cb466a3f809fda503a4c50746a0eddbd22bf19c0481c634a82f397d8f2fed822d3bd022f6e6960975c2571d70e9fbdd8e64f8bf60fa173c379ce958a0e0db29447438e671353a"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "lunch",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19976e539d45e2aa",
+        "source_subject": "[Special Event] Health Policy in America: A Look at the Current State of Play at HHS and the CDC"
+      },
+      "timestamp": "2025-09-23T10:53:59.036906"
+    },
+    "19976d612300a18d_62ae2bab95a0dd5c": {
+      "response": {
+        "title": "Interview Prep for USG Deployment Strategist",
+        "description": "Preparation for the upcoming interviews including a take-home project and an open-ended decomposition interview.",
+        "date_start": "2025-09-24",
+        "time_start": "09:45",
+        "time_end": null,
+        "location": null,
+        "organizer": "Aidan Dowling",
+        "mailing_list": "USG-AIP-DEMO@Palantir.com",
+        "urls": [
+          "https://signup.palantirfoundry.com/signup?signupPermitCode=BUILD_WITH_AIP&tracking-code=build.palantir.com",
+          "https://community.palantir.com/",
+          "https://www.palantir.com/docs/",
+          "https://learn.palantir.com/",
+          "https://aip.palantir.com/#all-solutions",
+          "https://github.com/palantir/aip-community-registry",
+          "https://www.palantir.com/privacy-and-security/",
+          "https://medium.com/palantir/interviewing-at-palantir-advice-from-palantirians-88444a90e7c4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19976d612300a18d",
+        "source_subject": "Re: Palantir | USG Deployment Strategist - Interview Prep"
+      },
+      "timestamp": "2025-09-23T10:54:12.973371"
+    },
+    "19971d08865956a9_5c6b5b490855642c": {
+      "response": {
+        "title": "Dinner Gathering",
+        "description": null,
+        "date_start": "2025-09-23",
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Amelia",
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "gathering",
+        "food": [
+          {
+            "name": "dinner",
+            "quantity_hint": "not specified",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "19971d08865956a9",
+        "source_subject": "[Pfoho-open] Looking for pitchers \u26be\ufe0f"
+      },
+      "timestamp": "2025-09-23T10:54:52.597891"
+    },
+    "1996f9227a83e53d_3d4ab7c2312c0f18": {
+      "response": {
+        "title": "Map Your Harvard CS Journey",
+        "description": "Whether you\u2019re just starting out in CS or already deep into the concentration, this is a great chance to reflect on your path, hear from others, and get inspired about what\u2019s ahead.",
+        "date_start": "2025-09-25",
+        "time_start": "19:30",
+        "time_end": null,
+        "location": "Sever 102",
+        "organizer": "HCS Academics",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://docs.google.com/forms/d/e/1FAIpQLSf_QbYnzJ-3NETjj2yBago1SYmfvk37hPB_pmt6Fla7qO6IKg/viewform"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "food",
+            "quantity_hint": "first 50",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996f9227a83e53d",
+        "source_subject": "[hcs-discuss] Harvard CS Plan Your Journey Event"
+      },
+      "timestamp": "2025-09-23T10:55:02.020089"
+    },
+    "1996f71d8771f432_0e632de858c4c3f7": {
+      "response": {
+        "title": "Join the Mission:Brain Team",
+        "description": "Interested in Neurosurgery, Global Health, or Medicine? Don't miss out on the Harvard Undergraduate Mission:Brain FALL APPLICATION!",
+        "date_start": "2025-09-27",
+        "time_start": "23:59",
+        "time_end": null,
+        "location": null,
+        "organizer": "Harvard Undergraduate Mission:Brain",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://www.missionbrain.org/",
+          "https://forms.gle/a6smeg84PAaDjnhj7",
+          "https://www.canva.com/design/DAGRi72y_9k/NJZ7976nhOU_9O_z1nRxNA/edit?utm_content=DAGRi72y_9k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996f71d8771f432",
+        "source_subject": "[Pfoho-open] Fwd: Interested in Neurosurgery or Global Health? Join the Mission:Brain Team!"
+      },
+      "timestamp": "2025-09-23T10:55:09.440679"
+    },
+    "1996f71a1d6c1788_66541b275665978e": {
+      "response": {
+        "title": "Volunteer with Budding Branches",
+        "description": "Join us in making college more accessible by volunteering to help students navigate their college journey.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://forms.gle/X6axoxKbkBwez66VA"
+        ],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996f71a1d6c1788",
+        "source_subject": "[Pfoho-open] Fwd: \ud83c\udf31 Be the Resource Students Need \u2014 Volunteer with Budding Branches"
+      },
+      "timestamp": "2025-09-23T10:55:15.159832"
+    },
+    "1996eb1057c29fc8_8397521a4db34c1c": {
+      "response": {
+        "title": "HUMA Career Panel",
+        "description": "Join us to talk about roles, recruiting, and day-to-day life in AI/ML, tech, quant, and research.",
+        "date_start": "2025-09-26",
+        "time_start": "16:30",
+        "time_end": null,
+        "location": "Science Center Hall E",
+        "organizer": "HUMA",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/KH38yXkWFKXgB4xB9"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "mochi donuts",
+            "quantity_hint": null,
+            "cuisine": "Japanese"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.8,
+          "overall": 0.85
+        },
+        "source_message_id": "1996eb1057c29fc8",
+        "source_subject": "[hcs-discuss] HUMA Career Panel"
+      },
+      "timestamp": "2025-09-23T10:55:22.912989"
+    },
+    "1996eb0e7eeee590_d6d051c6952ce424": {
+      "response": {
+        "title": "HUMA Career Panel",
+        "description": "HUMA is hosting a career panel with representatives from Citadel, Jane Street, Anthropic, and Microsoft Research! Join us to talk about roles, recruiting, and day-to-day life in AI/ML, tech, quant, and research.",
+        "date_start": "2025-09-26",
+        "time_start": "16:30",
+        "time_end": null,
+        "location": "Science Center Hall E",
+        "organizer": "HUMA Harvard Undergraduate Mathematics Association",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/KH38yXkWFKXgB4xB9"
+        ],
+        "category": "seminar",
+        "food": [
+          {
+            "name": "mochi donuts",
+            "quantity_hint": null,
+            "cuisine": "Japanese"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.8,
+          "overall": 0.85
+        },
+        "source_message_id": "1996eb0e7eeee590",
+        "source_subject": "[hcs-discuss] Fwd: HUMA Career Panel"
+      },
+      "timestamp": "2025-09-23T10:55:30.003231"
+    },
+    "1996e4480f9151ff_f1a2782ad9644cad": {
+      "response": {
+        "title": "FREE VIP PRE-SCREENING OF WARNER BROTHERS\u2019 ONE BATTLE AFTER ANOTHER STARRING LEONARDO DICAPRIO",
+        "description": null,
+        "date_start": "2025-09-22",
+        "time_start": "19:30",
+        "time_end": null,
+        "location": "Coolidge Corner Theatre, 290 Harvard St, Brookline, MA 02446",
+        "organizer": "Gabby Medina",
+        "mailing_list": "LAST CHANCE",
+        "urls": [
+          "https://wbtickets.com/movie_landing/SEFSVkFSRFdCVQ%3D%3D"
+        ],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996e4480f9151ff",
+        "source_subject": "[LAST CHANCE] FREE ADVANCED LEONARDO DICAPRIO MOVIE SCREENING TOMORROW!!!!"
+      },
+      "timestamp": "2025-09-23T10:55:46.730176"
+    },
+    "19976d66fdbd2c9c_59256da2909abb7f": {
+      "response": {
+        "title": "Meeting with Professor Schnapp",
+        "description": "Discussion about auditing Complit 291X and potential advising on student organization.",
+        "date_start": "2025-09-23",
+        "time_start": "09:00",
+        "time_end": null,
+        "location": "423 Boylston Hall",
+        "organizer": "Josh Mysore",
+        "mailing_list": null,
+        "urls": [
+          "http://mlml.io",
+          "http://jeffreyschnapp.com/"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19976d66fdbd2c9c",
+        "source_subject": "Re: Interest in auditing Complit 291X"
+      },
+      "timestamp": "2025-09-23T10:57:51.865500"
+    },
+    "19977149fc042b14_2917d399afa296f3": {
+      "response": {
+        "title": "Harvard vs. Brown",
+        "description": null,
+        "date_start": "2025-09-27",
+        "time_start": "18:00",
+        "time_end": null,
+        "location": "Cambridge Queen's Head, 45 Quincy St, Cambridge, MA",
+        "organizer": "Harvard Athletics",
+        "mailing_list": "CrimZone",
+        "urls": [
+          "https://gocrimson.com/sports/2025/6/27/football-home-opener.aspx?utm_medium=email&elq_cid=133831&RSRC=Email&RDAT=1581&aid=16035&pid=harvard_email_eloqua&rid=1581&ehash=97b425dd84636ca6fe631c3a7486a38f92d2d266e8a47c2e4a574deffd4ca436&elqTrackId=743197D11F48E4E6FC75FFA0E2620AC1&elq=8456e31babc444d982c9a604dd9e4f0d&elqaid=1581&elqat=1&elqCampaignId=1246&elqak=8AF5615E759498D106C74E40AA22AECE9EC00C6EB49CFDD6568A816317E8E2753B64",
+          "https://gocrimson.com/?utm_medium=email&elq_cid=133831&RSRC=Email&RDAT=1581&aid=16035&pid=harvard_email_eloqua&rid=1581&ehash=97b425dd84636ca6fe631c3a7486a38f92d2d266e8a47c2e4a574deffd4ca436&elqTrackId=7050e9e729174bbf9a896de331d44195&elq=8456e31babc444d982c9a604dd9e4f0d&elqaid=1581&elqat=1&elqCampaignId=1246&elqak=8AF5953DB92F79C80CF3E4B050AD7B15DE780C6EB49CFDD6568A816317E8E2753B64"
+        ],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19977149fc042b14",
+        "source_subject": "Student Ticket Distribution for Harvard vs Brown \ud83c\udfc8"
+      },
+      "timestamp": "2025-09-23T10:58:19.353217"
+    },
+    "19976d356bbe393f_8c7fcd5199b90828": {
+      "response": {
+        "title": "Interview Prep Call",
+        "description": "A call to discuss the scope of the technical project for the USG Deployment Strategist position.",
+        "date_start": "2025-09-23",
+        "time_start": "09:45",
+        "time_end": null,
+        "location": null,
+        "organizer": "Aidan Dowling",
+        "mailing_list": "USG-AIP-DEMO@Palantir.com",
+        "urls": [
+          "https://signup.palantirfoundry.com/signup?signupPermitCode=BUILD_WITH_AIP&tracking-code=build.palantir.com",
+          "https://community.palantir.com/",
+          "https://www.palantir.com/docs/",
+          "https://learn.palantir.com/",
+          "https://aip.palantir.com/#all-solutions",
+          "https://github.com/palantir/aip-community-registry",
+          "https://www.palantir.com/privacy-and-security/",
+          "https://medium.com/palantir/interviewing-at-palantir-advice-from-palantirians-88444a90e7c4"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        }
+      },
+      "timestamp": "2025-09-23T10:58:29.594949"
+    },
+    "1996e2a803d4194c_0c5f8aaa0a558dc1": {
+      "response": {
+        "title": "premed office hours",
+        "description": "Come with any/all questions.",
+        "date_start": "2025-09-21",
+        "time_start": "17:30",
+        "time_end": "18:30",
+        "location": "dhall",
+        "organizer": "Jill on behalf of Pfoho premed",
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996e2a803d4194c",
+        "source_subject": "[Pfoho-open] Re: Next \ud83e\ude7apremed office hours\ud83e\ude7a Sun 9/21 5:30-6:30pm, dhall!!"
+      },
+      "timestamp": "2025-09-23T11:11:13.033570"
+    },
+    "1996d56ff2268af1_fa56d12997186aa7": {
+      "response": {
+        "title": "ICE CREAM SOCIAL!",
+        "description": null,
+        "date_start": "2025-09-24",
+        "time_start": "16:00",
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "social",
+        "food": [
+          {
+            "name": "ice cream",
+            "quantity_hint": null,
+            "cuisine": "American"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.9,
+          "overall": 0.9
+        },
+        "source_message_id": "1996d56ff2268af1",
+        "source_subject": "[Pfoho-open] Fwd: [MOOSE] ICE CREAM SOCIAL! WEDNESDAY @4PM \ud83c\udf66"
+      },
+      "timestamp": "2025-09-23T11:11:18.385257"
+    },
+    "1996d11d997270e2_603eff8093b5c751": {
+      "response": {
+        "title": "JOIN GLOBAL ALLIANCE FOR MEDICAL INNOVATION",
+        "description": "We are currently recruiting new members for the Fall 2025 semester.",
+        "date_start": "2025-09-21",
+        "time_start": "23:59",
+        "time_end": null,
+        "location": null,
+        "organizer": "GAMI: Global Alliance for Medical Innovation",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://docs.google.com/document/d/1m1Iefb4olW75YPxMkBX74HmDG3cTY9mNHAoTFSOe0mg/edit?usp=sharing",
+          "https://forms.gle/gx2YU29Y2caTAWhPA",
+          "http://harvardgami.com/"
+        ],
+        "category": "gathering",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996d11d997270e2",
+        "source_subject": "[Pfoho-open] [APPLICATIONS DUE TODAY] \ud83e\ude7a JOIN GLOBAL ALLIANCE FOR MEDICAL INNOVATION"
+      },
+      "timestamp": "2025-09-23T11:11:24.968967"
+    },
+    "1996cbdf58a9581b_d194096764432327": {
+      "response": null,
+      "timestamp": "2025-09-23T14:41:45.982880"
+    },
+    "1996c68c91840fd0_a0066dcf9dc76111": {
+      "response": {
+        "title": "Pfoho Student-Tutor Sustainability Committee Meeting",
+        "description": "Join us for the pfirst meeting of the Student-Tutor sustainability committee - open to all. Agenda: Brainstorm ideas for how to improve sustainability in Pfoho, divide and conquer to implement concrete plans this year, prioritize spending!",
+        "date_start": "2025-09-21",
+        "time_start": "18:00",
+        "time_end": "19:00",
+        "location": "Hastings Room, 1st floor moors",
+        "organizer": "Pfoho Student-Tutor Sustainability Committee",
+        "mailing_list": "PFOHO",
+        "urls": [],
+        "category": "meeting",
+        "food": [
+          {
+            "name": "snacks",
+            "quantity_hint": null,
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.5,
+          "overall": 0.8
+        },
+        "source_message_id": "1996c68c91840fd0",
+        "source_subject": "[PFOHO] TONITE - Re: \ud83c\udf0e \u267b\ufe0f Launch Mtg Sun Sept 21, 6-7 PM - Pfoho Student-Tutor Sustainability Committee \ud83c\udf0e \u267b\ufe0f"
+      },
+      "timestamp": "2025-09-23T11:11:32.336393"
+    },
+    "1996a20cf7554f07_0491c94642ab3e69": {
+      "response": {
+        "title": "Paul Titchenell, Head of Metabolic Physiology at Eli Lilly \u2013 Speaker Event",
+        "description": "An amazing speaker event featuring Paul Titchenell, Executive Director & Head of Metabolic Physiology at Eli Lilly and Company, discussing drug discovery for obesity and cardiometabolic disease.",
+        "date_start": "2025-09-23",
+        "time_start": "17:30",
+        "time_end": null,
+        "location": "campus",
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://eot.aging-initiative.org/f/a/pd_Fk0MCQTRfKWLCORY6iw~~/AAAHURA~/L69WDxI-oleznvUTeFA8bGXrr02xwHW2oiOECLUvcGHa09nS3zH8L5TQpgA2v4o8mPuFmzaiT_eq43Qjik0zmMim2G2K85gvBOEMsrZikiudMlnJcGLAYCc9CHLrMLYWoFPpIKyHAdL8pWzqyhj_EeRZZAoDkVUhz2kiKfugKPc~"
+        ],
+        "category": "talk",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996a20cf7554f07",
+        "source_subject": "[Pfoho-open] [Don\u2019t Miss Out] Paul Titchenell, Head of Metabolic Physiology at Eli Lilly \u2013 Tues 9/23 @ 5:30pm"
+      },
+      "timestamp": "2025-09-23T11:11:43.293186"
+    },
+    "19969d4c96fc1be3_a74fede528d4bca6": {
+      "response": {
+        "title": "Blackstone Data Science Info Session",
+        "description": "Blackstone is hiring data scientists! Blackstone\u2019s Data Science team (BXDS) works directly with investment deal teams and portfolio company management teams to apply AI, statistics, and machine learning to real-world investment and business challenges.",
+        "date_start": "2025-09-30",
+        "time_start": "16:30",
+        "time_end": "17:30",
+        "location": "Emerson 210, Harvard",
+        "organizer": "Blackstone Data Science",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://www.blackstone.com/data-science/",
+          "https://careerservices.fas.harvard.edu/events/2025/09/30/blackstone-data-science-info-session-2/",
+          "https://blackstone.wd1.myworkdayjobs.com/Blackstone_Campus_Careers/job/New-York/XMLNAME-2026-Blackstone-Data-Science-Analyst_39007",
+          "https://blackstone.wd1.myworkdayjobs.com/Blackstone_Campus_Careers/job/New-York/XMLNAME-2026-Blackstone-Data-Science-Summer-Analyst_39008"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "19969d4c96fc1be3",
+        "source_subject": "[hcs-discuss] Fwd: Blackstone Data Science 2026 Internship & Full-Time In-Person Opportunities"
+      },
+      "timestamp": "2025-09-23T11:11:53.068402"
+    },
+    "199772bc5f8bd0ed_a376c524669e2ea6": {
+      "response": {
+        "title": "Grid Applied AI Incubator",
+        "description": "Your chance to experiment, build, and launch bold new ideas with hands-on support, funding, and mentorship.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Sally Klimp",
+        "mailing_list": "cs-undergrads",
+        "urls": [
+          "https://www.grid.harvard.edu/ai-incubator"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.7
+        },
+        "source_message_id": "199772bc5f8bd0ed",
+        "source_subject": "[cs-undergrads] Turn AI into impact \u2014 join the Grid Applied AI Incubator"
+      },
+      "timestamp": "2025-09-23T12:53:48.134370"
+    },
+    "199699519ba6bb9f_89eadcadb4ee2264": {
+      "response": {
+        "title": "Brian Honan 5K Annual Run/Walk",
+        "description": "Hundreds of Harvard people do the Brian Honan 5K every year. It's super fun. You can run it fast or just jog/power-walk it. And you can sleep late because it starts at noon! Oh \u2014 it's free, too, with promo code HAR!",
+        "date_start": "2025-09-28",
+        "time_start": "12:00",
+        "time_end": null,
+        "location": "181 Brighton Avenue, Allston",
+        "organizer": "Harvard's Public Affairs & Communications office (HPAC)",
+        "mailing_list": "HCMC-marathon-list",
+        "urls": [
+          "https://marathon.harvard.edu/events.html#honan",
+          "https://urldefense.proofpoint.com/v2/url?u=https-3A__brianhonan5k.racewire.com_register.php-3Fid-3D14618&d=DwMF-g&c=WO-RGvefibhHBZq3fL85hQ&r=wGcTz1qVODbaLrmDyVJnkItYbxBrYhAyUOuxHj9KNiM&m=DCtesgnmvA66Su3TcCQOXahQFDxto15XeCts5cMHcBZ9zPONn3Vkjk2_Lcap2JIc&s=VLP3hp3FHHsfxXaSh6rsH4hkCjsCPTuxeSMTGo7_mRk&e=",
+          "https://share.google_V0kOK7BOGnIvTjlu9",
+          "https://maps.app.goo.gl_Cjm2NeAkuGz4wwgb7",
+          "https://www.mapmyrun.com_routes_view_2188543783",
+          "https://share.google_YQyyvMHsZlGBW9LDy"
+        ],
+        "category": "social",
+        "food": [
+          {
+            "name": "t-shirts",
+            "quantity_hint": "limited number available",
+            "cuisine": null
+          }
+        ],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "199699519ba6bb9f",
+        "source_subject": "[HCMC-marathon-list] Last Chance to Register! Brian Honan 5K NEXT Sunday - FREE, sleep late, and cool Harvard long-sleeve t-shirts!"
+      },
+      "timestamp": "2025-09-23T13:12:50.763825"
+    },
+    "19968e30365fd1a7_5420a32bd749c28e": {
+      "response": {
+        "title": "Fall 2025 Biolearn Initiative",
+        "description": "The Aging Initiative is thrilled to launch its Fall 2025 Biolearn Initiative and invites students to apply for a competitive opportunity to join our team working on Biolearn, a first-in-class open-source library for the analysis of biomarkers of aging data.",
+        "date_start": "2025-09-21",
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://docs.google.com/forms/d/e/1FAIpQLSdLUpizvmIMAkw4Y2jrZ991yj3lX_gMeZ63GKBM0nbXHgjfCw/viewform?usp=header"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19968e30365fd1a7",
+        "source_subject": "[hcs-discuss] [Aging Initiative] Fwd: Due Tomorrow! Fall 2025 Biolearn Project \u2013 Join the Future of Aging Computational Science"
+      },
+      "timestamp": "2025-09-23T13:13:10.665128"
+    },
+    "1996899bef4d63ae_f0144a924b1cc940": {
+      "response": {
+        "title": "Kleiner Perkins Fellows Program",
+        "description": "Kleiner Perkins is launching the 15th annual Kleiner Perkins Fellows Program and we\u2019d like to invite members of HCS to participate. The KP Fellows Program identifies the top 1% of technical undergraduate talent for an incredible internship in our portfolio.",
+        "date_start": null,
+        "time_start": null,
+        "time_end": null,
+        "location": null,
+        "organizer": "Kleiner Perkins",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://www.kleinerperkins.com/fellows/",
+          "https://jobs.ashbyhq.com/kleinerperkinsfellows/2fb55478-01f4-4a41-ad68-7b7315ed8963?utm_source=nAwxpZmk2W"
+        ],
+        "category": null,
+        "food": [],
+        "confidence": {
+          "category": null,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "1996899bef4d63ae",
+        "source_subject": "[hcs-discuss] Apply to be a Kleiner Perkins Fellow"
+      },
+      "timestamp": "2025-09-23T13:13:16.948247"
+    },
+    "1996398dc40757a8_fa56d12997186aa7": {
+      "response": {
+        "title": "STANDUP COMEDY SHOW",
+        "description": null,
+        "date_start": "2025-09-19",
+        "time_start": "19:00",
+        "time_end": null,
+        "location": "Sever 113",
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "1996398dc40757a8",
+        "source_subject": "[Pfoho-open] STANDUP COMEDY SHOW Friday @ 7 PM, Sever 113"
+      },
+      "timestamp": "2025-09-23T13:13:21.456990"
+    },
+    "199635462d0eb158_fa56d12997186aa7": {
+      "response": {
+        "title": "SUNRISE HARVARD MEETING",
+        "description": null,
+        "date_start": "2025-09-20",
+        "time_start": "11:00",
+        "time_end": null,
+        "location": null,
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199635462d0eb158",
+        "source_subject": "[Pfoho-open] SUNRISE HARVARD MEETING 9/20 @ 11am"
+      },
+      "timestamp": "2025-09-23T13:13:25.110340"
+    },
+    "199634b4a0b2a9da_fa56d12997186aa7": {
+      "response": {
+        "title": "STANDUP COMEDY SHOW",
+        "description": null,
+        "date_start": "2025-09-19",
+        "time_start": "19:00",
+        "time_end": null,
+        "location": "Sever 113",
+        "organizer": null,
+        "mailing_list": "Pfoho-open",
+        "urls": [],
+        "category": "social",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199634b4a0b2a9da",
+        "source_subject": "[Pfoho-open] STANDUP COMEDY SHOW Friday @ 7 PM, Sever 113"
+      },
+      "timestamp": "2025-09-23T13:13:28.855452"
+    },
+    "19977912bc6d4770_403e375253fa5d9f": {
+      "response": {
+        "title": "Resume Workshop",
+        "description": "Join us for our first Resume Workshop. We\u2019ll cover common red flags that hold resumes back, how to stand out in a competitive applicant pool, and key tips for this recruiting cycle.",
+        "date_start": "2025-09-24",
+        "time_start": "19:00",
+        "time_end": null,
+        "location": "Sever 113",
+        "organizer": "Layla Ismail",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/JBGmjFNF7R9eTBXJA"
+        ],
+        "category": "workshop",
+        "food": [
+          {
+            "name": "pizza",
+            "quantity_hint": "free",
+            "cuisine": "American"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.9,
+          "overall": 0.9
+        },
+        "source_message_id": "19977912bc6d4770",
+        "source_subject": "[hcs-discuss] Re: [wics-chatter] Re: [FREE PIZZA] WiCS-Run Resume Workshop"
+      },
+      "timestamp": "2025-09-23T14:41:38.490427"
+    },
+    "1997790e84c44601_7eb184209969e171": {
+      "response": {
+        "title": "WiCS-Run Resume Workshop",
+        "description": "Join us for our first Resume Workshop. We\u2019ll cover common red flags that hold resumes back, how to stand out in a competitive applicant pool, and key tips for this recruiting cycle.",
+        "date_start": "2025-09-24",
+        "time_start": "18:00",
+        "time_end": null,
+        "location": "Sever 113",
+        "organizer": "Layla Ismail",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "https://forms.gle/JBGmjFNF7R9eTBXJA"
+        ],
+        "category": "workshop",
+        "food": [
+          {
+            "name": "pizza",
+            "quantity_hint": "free",
+            "cuisine": "American"
+          }
+        ],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": 0.9,
+          "overall": 0.9
+        },
+        "source_message_id": "1997790e84c44601",
+        "source_subject": "[hcs-discuss] Fwd: [wics-chatter] [FREE PIZZA] WiCS-Run Resume Workshop"
+      },
+      "timestamp": "2025-09-23T14:41:43.314420"
+    },
+    "199630b1ba55e61e_ab975e2921473cf5": {
+      "response": {
+        "title": "Pfellowships Table",
+        "description": "This is a friendly reminder from your Pfellowships Tutor Team to sign-up for Pfellowships Table (office hours), which will take place every Sunday from 6 to 8 p.m.",
+        "date_start": "2025-09-14",
+        "time_start": "18:00",
+        "time_end": "20:00",
+        "location": "Upper Dining Hall",
+        "organizer": "Pfellowships Tutor Team",
+        "mailing_list": "PFOHO",
+        "urls": [
+          "https://docs.google.com/document/d/1RY029ODVV3mlLGK_sUXDmfSnHq25vjeXYNZs5s9TS28/edit?usp=sharing",
+          "https://calendly.com/pfellowshipsteampfoho/pfellowships-table-office-hours"
+        ],
+        "category": "meeting",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        },
+        "source_message_id": "199630b1ba55e61e",
+        "source_subject": "[PFOHO] Pfellowships Table"
+      },
+      "timestamp": "2025-09-23T14:41:51.074626"
+    },
+    "19962c104220cb1f_24a24c14df7a321f": {
+      "response": {
+        "title": "Cambridge Public Library VITA Volunteer Opportunity",
+        "description": "Opportunity for interested pre-law students to become IRS-certified in tax preparation and provide free tax help to low-income community members.",
+        "date_start": "2026-01-01",
+        "time_start": null,
+        "time_end": null,
+        "location": "Cambridge Public Library or Central Square Public Library",
+        "organizer": "Olivia Lin and Jon-Yin Chong",
+        "mailing_list": "Pfoho-open",
+        "urls": [
+          "https://hls.harvard.edu/today/its-so-great-to-see-the-work-you-do-have-immediate-positive-impact/",
+          "https://forms.gle/qdH3nZ3yqZRY37Y79",
+          "https://www.cplvita.org",
+          "https://www.harvardvita.org/"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.8,
+          "cuisine": null,
+          "overall": 0.8
+        },
+        "source_message_id": "19962c104220cb1f",
+        "source_subject": "[Pfoho-open] Opportunity for Pre-Law Students - VITA, tax law, public service"
+      },
+      "timestamp": "2025-09-23T14:41:56.114616"
+    },
+    "199627f77c6a61d4_eeff832521ad09b1": {
+      "response": {
+        "title": "Applying to STEM PhD Programs",
+        "description": "The webinar will be led by Harvard Physics professor, Dr. Vinny Manoharan, and is open to all students interested in applying to or learning more about STEM PhD programs.",
+        "date_start": "2025-10-08",
+        "time_start": "17:30",
+        "time_end": null,
+        "location": "Zoom",
+        "organizer": "Office for Belonging, Engagement, and Community",
+        "mailing_list": "hcs-discuss",
+        "urls": [
+          "http://tinyurl.com/phd-apps"
+        ],
+        "category": "seminar",
+        "food": [],
+        "confidence": {
+          "category": 0.9,
+          "cuisine": null,
+          "overall": 0.9
+        }
+      },
+      "timestamp": "2025-09-23T14:41:59.902873"
+    }
+  },
+  "event_dedup": {
+    "pfellowships table|2025-09-14|18:00|upper dining hall": "Pfellowships Table_2025-09-14_18:00",
+    "applying to stem phd programs|2025-10-08|17:30|zoom": "Applying to STEM PhD Programs_2025-10-08_17:30",
+    "intro to figma workshop|2025-09-24|18:00|harvard hall 101": "Intro to Figma Workshop_2025-09-24_18:00",
+    "first meeting of fall 2025|2025-09-19|14:00|sever hall 103": "First Meeting of Fall 2025_2025-09-19_14:00",
+    "kempner all hands meeting|2025-09-18|15:30|harvard science & engineering complex, 150 western ave, allston, boston ma 02134, room 6.242": "Kempner All Hands Meeting_2025-09-18_15:30",
+    "cambridge public library vita volunteer opportunity|None|None|cambridge public library or central square public library": "Cambridge Public Library VITA Volunteer Opportunity_None_None",
+    "2027 asset management & insurance summer intern recruiting|None|None|new york, menlo park, san francisco": "2027 Asset Management & Insurance Summer Intern Recruiting_None_None",
+    "186e1ba3d256e73aa42572796cc2e0d6": "Cambridge Public Library VITA Volunteer Opportunity_None_None",
+    "2cddd67d0b5c7027f3959221e0806ae8": "2027 Asset Management & Insurance Summer Intern Recruiting_None_None",
+    "9d73913ffb61c8036f208fe4e8923b6b": "JOIN GLOBAL ALLIANCE FOR MEDICAL INNOVATION_None_None",
+    "fe1e1ef120ead1c08271d0b17a93c1bd": "Join Our Startup: Barry & Bonna Publishing LLC_None_None",
+    "ab11e1f65571e8cfc12867509f8bd8e7": "Presentation on Expert Systems_2025-09-22_12:45",
+    "ad404fed10f78f55b628286495157067": "ReCompute 2025 Fall Comp_2025-09-28_None",
+    "239fb93706b357a9cec23e4c80133d9a": "HUMIC Intro Session_2025-09-19_17:00",
+    "61c7bdfb7f659d3ad36687bf6e6d63e7": "Launch Meeting of the Student-Tutor Sustainability Committee_2025-09-21_18:00",
+    "edea55984a9caffeea723bb4530bee1e": "Resume Review Table_2025-09-17_21:00",
+    "1e71c7770aa7586c87caba7c73118b04": "Info Session for Program for Scientifically-Inspired Leadership_2025-09-18_16:00",
+    "9a1e0c57c52c6c595dd2189a445131d4": "Improv Auditions Day 2_2025-09-18_19:00",
+    "561294b31acc71d09ea6909a4a8b6ed4": "Computer Science Colloquium Series_2025-09-25_14:30",
+    "00bed98327897ef2988957014ec549d0": "Tempus Meeting_2025-09-19_15:00",
+    "c276e98bf053072500aac6cbd9f73be3": "Announcement of Class of 2028 Representatives_None_None",
+    "5ed0e09ef55ca15c0f15d499d9b6577f": "HoCo Meeting Notes_2025-09-16_None",
+    "595a707d3b07191eb1f4a0d95cc6e9c1": "Comp Harvard Alternative Investment! [9/18 Kickoff]_2025-09-18_19:00",
+    "5ce30c7aea0a1bed61f1e038ee30fd39": "STANDUP COMEDY SHOW_2025-09-19_19:00",
+    "faeb99f651564ef5a53507c4faa45a6d": "SUNRISE HARVARD MEETING_2025-09-20_11:00",
+    "06cb10b35dcf71ea260aa26191fc001c": "FREE FLOUR COFFEE!!!!_2025-09-19_None",
+    "d609a83fa816ac5e0083dfb15eef001b": "FREE FOOD + PHILOSOPHY LECTURE EVENT_2025-09-18_None",
+    "849eedf37077580494be272528ceb9c9": "De La Rose Concert_2025-09-17_20:30",
+    "b44b361987c4ffd1f49e84624acb6b1d": "CS Nights_2025-09-17_20:00",
+    "37688c19e12e0386ff773fdafe3a5d87": "Student Ticket Distribution for Harvard vs Brown_2025-09-13_14:00"
+  },
+  "metadata": {
+    "created": "2025-09-19T16:12:50.301260",
+    "version": "1.0"
+  }
+}

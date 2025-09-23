@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GG.Events Parser</title>
+    <title>Freed: Event and Food Finder</title>
     <style>
+        :root {
+            --primary-dark: #0f0f0f;
+            --secondary-dark: #1a1a1a;
+            --tertiary-dark: #2d2d2d;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light-gray: #d0d0d0;
+            --accent-orange: #ff6b35;
+            --accent-orange-light: #ff8c5a;
+            --border-gray: #404040;
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+            --gradient-primary: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-orange-light) 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,409 +26,809 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f8fafc;
-            color: #1a202c;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        .container {
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-gray);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-white);
         }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .triangle-1, .triangle-2 {
+            position: absolute;
+            width: 0;
+            height: 0;
+            transition: all 0.3s ease;
+        }
+
+        .triangle-1 {
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 35px solid var(--accent-orange);
+            top: 0;
+            left: 0;
+        }
+
+        .triangle-2 {
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 35px solid var(--accent-orange-light);
+            top: 5px;
+            left: 10px;
+            opacity: 0.8;
+        }
+
+        .logo:hover .triangle-1 {
+            transform: rotate(5deg);
+        }
+
+        .logo:hover .triangle-2 {
+            transform: rotate(-5deg);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
-        
-        .controls {
-            background: white;
-            padding: 25px;
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
             border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
-        .form-row {
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--tertiary-dark);
+            color: var(--text-white);
+            border: 1px solid var(--border-gray);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+            border-color: var(--accent-orange);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-section {
+            background: var(--secondary-dark);
+            border-radius: 16px;
+            border: 1px solid var(--border-gray);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-gray);
+            background: var(--tertiary-dark);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .controls {
+            padding: 2rem;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
-        
+
         .form-group {
             display: flex;
             flex-direction: column;
         }
-        
+
         .form-group label {
             font-weight: 600;
-            color: #374151;
-            margin-bottom: 8px;
+            color: var(--text-light-gray);
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
-        
+
         .form-group input, .form-group select {
-            padding: 12px;
-            border: 2px solid #e5e7eb;
+            padding: 1rem;
+            background: var(--primary-dark);
+            border: 1px solid var(--border-gray);
             border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.2s;
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
-        
+
         .form-group input:focus, .form-group select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
         }
-        
+
         .button-group {
             display: flex;
-            gap: 12px;
+            gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
-        
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
+
+        .btn-small {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
         }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-secondary {
-            background: #f8f9fa;
-            color: #6c757d;
-            border: 1px solid #dee2e6;
-        }
-        
-        .btn-secondary:hover {
-            background: #e9ecef;
-            color: #495057;
-        }
-        
+
         .btn-food {
             background: #10b981;
             color: white;
         }
-        
+
         .btn-food:hover {
             background: #059669;
         }
-        
+
         .btn-food.active {
             background: #047857;
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
         }
-        
+
+        /* Status Messages */
         .status {
-            padding: 15px;
+            padding: 1rem 1.5rem;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             font-weight: 500;
+            border-left: 4px solid;
         }
-        
+
         .status.loading {
-            background: #dbeafe;
-            color: #1e40af;
-            border: 1px solid #93c5fd;
-        }
-        
-        .status.success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-        
-        .status.error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-        
-        .events-container {
-            display: grid;
-            gap: 20px;
-        }
-        
-        .date-group {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border-color: #3b82f6;
+            position: relative;
             overflow: hidden;
         }
-        
+
+        .status.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: loading-shimmer 2s infinite;
+        }
+
+        @keyframes loading-shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .status.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #6ee7b7;
+            border-color: #10b981;
+        }
+
+        .status.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            border-color: #ef4444;
+        }
+
+        /* Events Display */
+        .events-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .date-group {
+            background: var(--secondary-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
         .date-header {
-            background: #f8fafc;
-            padding: 15px 20px;
-            border-bottom: 1px solid #e5e7eb;
+            background: var(--tertiary-dark);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-gray);
             font-weight: 600;
-            color: #374151;
+            color: var(--text-light-gray);
             font-size: 1.1rem;
         }
-        
+
         .event-card {
-            border-bottom: 1px solid #e5e7eb;
-            padding: 20px;
-            transition: all 0.2s;
+            border-bottom: 1px solid var(--border-gray);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
-        
+
         .event-card:hover {
-            background: #f8fafc;
+            background: var(--tertiary-dark);
         }
-        
+
         .event-card:last-child {
             border-bottom: none;
         }
-        
+
         .event-card.expanded {
-            background: #f8fafc;
+            background: var(--tertiary-dark);
         }
-        
+
         .event-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
         }
-        
+
         .event-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 8px;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
             flex: 1;
         }
-        
+
         .event-time {
-            color: #6b7280;
+            color: var(--text-gray);
             font-size: 0.9rem;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
-        
+
         .event-location {
-            color: #6b7280;
+            color: var(--text-gray);
             font-size: 0.9rem;
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
         }
-        
+
         .event-badges {
             display: flex;
-            gap: 8px;
+            gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
         }
-        
+
         .badge {
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
         }
-        
+
+        .badge-category {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-cuisine {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .badge-confidence {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
         .badge-food {
-            background: #d1fae5;
-            color: #065f46;
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
-        
+
         .badge-mailing-list {
-            background: #dbeafe;
-            color: #1e40af;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
-        
+
         .badge-url {
-            background: #fef3c7;
-            color: #92400e;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
-        
-        .event-details {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e5e7eb;
-        }
-        
-        .event-card.expanded .event-details {
-            display: block;
-        }
-        
-        .detail-item {
-            margin-bottom: 10px;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 4px;
-        }
-        
-        .detail-value {
-            color: #6b7280;
-        }
-        
-        .urls {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        
-        .url-link {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .url-link:hover {
-            text-decoration: underline;
-        }
-        
-        .contacts {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        
-        .contact {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .contact-email {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .contact-email:hover {
-            text-decoration: underline;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #6b7280;
-        }
-        
-        .empty {
-            text-align: center;
-            padding: 40px;
-            color: #6b7280;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
+
         .expand-icon {
-            transition: transform 0.2s;
+            color: var(--text-gray);
+            transition: transform 0.3s ease;
             margin-left: auto;
         }
-        
+
         .event-card.expanded .expand-icon {
             transform: rotate(180deg);
         }
-        
+
+        .event-details {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .event-card.expanded .event-details {
+            display: block;
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--text-light-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            color: var(--text-gray);
+        }
+
+        .urls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .url-link {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .url-link:hover {
+            color: var(--accent-orange-light);
+            text-decoration: underline;
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-email {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about-section {
+            display: none;
+            padding: 2rem;
+        }
+
+        .about-section.active {
+            display: block;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-light-gray);
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            color: var(--text-gray);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Loading and Empty States */
+        .loading, .empty {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-gray);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+            .nav-container {
+                padding: 0 1rem;
             }
-            
-            .form-row {
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .form-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .button-group {
                 flex-direction: column;
             }
-            
+
             .btn {
                 width: 100%;
+                justify-content: center;
             }
+        }
+
+        /* Progress Animation */
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        .progress-bar {
+            margin-top: 10px;
+            background: var(--border-gray);
+            border-radius: 4px;
+            height: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: var(--accent-orange);
+            height: 100%;
+            width: 0%;
+            animation: progress 2s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>GG.Events Parser</h1>
-            <p>Parse events from GG.Events mailing list emails using AI</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showHomePage()">
+                <div class="logo-icon">
+                    <div class="triangle-1"></div>
+                    <div class="triangle-2"></div>
+                </div>
+                <span class="logo-text">Freed</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showHomePage()" class="nav-link active" data-page="home">Events</a></li>
+                <li><a href="#" onclick="showAboutPage()" class="nav-link" data-page="about">About</a></li>
+            </ul>
         </div>
-        
-        <div class="controls">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="maxResults">Number of Emails to Process:</label>
-                    <input type="number" id="maxResults" value="50" min="1" max="100">
-                </div>
-                
-                <div class="form-group">
-                    <label for="dateFilter">Filter by Date:</label>
-                    <input type="date" id="dateFilter" placeholder="Select date to filter">
-                </div>
-                
-                <div class="form-group">
-                    <label for="mailingListFilter">Filter by Mailing List:</label>
-                    <select id="mailingListFilter">
-                        <option value="">All Mailing Lists</option>
-                    </select>
-                </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Event and Food Finder</h1>
+            <p>Discover campus events and delicious food from your mailing lists with AI-powered parsing and smart categorization.</p>
+            <div class="hero-cta">
+                <button onclick="showHomePage()" class="btn btn-primary">
+                    🔍 Browse Events
+                </button>
+                <button onclick="showAboutPage()" class="btn btn-secondary">
+                    📖 Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Page -->
+        <div id="homePage" class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">🎉 Upcoming Events</h2>
+                <p class="section-subtitle">Discover events from your mailing lists with intelligent food and category detection</p>
             </div>
             
-            <div class="button-group">
-                <button onclick="loadEvents()" id="loadBtn" class="btn btn-primary">🔄 Load Events</button>
-                <button onclick="toggleFoodFilter()" id="foodBtn" class="btn btn-food">🍕 Food Only</button>
-                <button onclick="clearFilters()" id="clearBtn" class="btn btn-secondary">🗑️ Clear Filters</button>
+            <div class="controls">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="dateFilter">Filter by Date:</label>
+                        <input type="date" id="dateFilter">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mailingListFilter">Filter by Mailing List:</label>
+                        <select id="mailingListFilter">
+                            <option value="">All Mailing Lists</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryFilter">Filter by Category:</label>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cuisineFilter">Filter by Cuisine:</label>
+                        <select id="cuisineFilter">
+                            <option value="">All Cuisines</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button onclick="loadEvents()" id="loadBtn" class="btn btn-primary btn-small">
+                        🔄 Load Events
+                    </button>
+                    <button onclick="toggleFoodFilter()" id="foodBtn" class="btn btn-food btn-small">
+                        🍕 Food Only
+                    </button>
+                    <button onclick="clearFilters()" id="clearBtn" class="btn btn-secondary btn-small">
+                        🗑️ Clear Filters
+                    </button>
+                </div>
+                
+                <p style="margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">
+                    Processing up to 100 recent mailing list emails with AI to extract event information. 
+                    Only click "Load Events" when you want to refresh the data.
+                </p>
             </div>
             
-            <p style="margin-top: 15px; color: #6b7280; font-size: 0.9rem;">
-                This will process the latest GG.Events emails and extract event information. 
-                Only click when you want to refresh the data to avoid unnecessary API costs.
-            </p>
+            <div id="status" class="status hidden"></div>
+            <div id="eventsContainer" class="events-container"></div>
         </div>
-        
-        <div id="status" class="status hidden"></div>
-        
-        <div id="eventsContainer" class="events-container"></div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="about-section">
+            <div class="about-content">
+                <h2>About Freed</h2>
+                <p>
+                    Freed is an intelligent event and food discovery platform that automatically parses your mailing list emails 
+                    to extract event information, categorize activities, and identify food offerings. Built with AI-powered 
+                    natural language processing, it transforms cluttered inboxes into organized event calendars.
+                </p>
+
+                <h3>🚀 Key Features</h3>
+                <ul class="feature-list">
+                    <li><strong>AI-Powered Parsing:</strong> Uses advanced language models to extract structured event data from unstructured email content</li>
+                    <li><strong>Smart Categorization:</strong> Automatically categorizes events (workshops, lectures, social events, etc.) with confidence scoring</li>
+                    <li><strong>Food Detection:</strong> Identifies food offerings, cuisines, and quantity hints from event descriptions</li>
+                    <li><strong>Mailing List Integration:</strong> Seamlessly connects to your Gmail and processes emails from various mailing lists</li>
+                    <li><strong>Intelligent Filtering:</strong> Filter events by date, category, cuisine, mailing list, and food availability</li>
+                    <li><strong>Modern Interface:</strong> Clean, dark-mode interface with responsive design for all devices</li>
+                </ul>
+
+                <h3>🔧 How It Works</h3>
+                <p>
+                    Freed connects to your Gmail account and scans emails from configured mailing lists. Using advanced AI models, 
+                    it analyzes email content to extract event details like titles, descriptions, dates, times, locations, and food information. 
+                    The system applies intelligent gating to only process emails that appear to contain event information, ensuring efficiency 
+                    and accuracy.
+                </p>
+
+                <h3>🎯 Perfect For</h3>
+                <ul class="feature-list">
+                    <li>Students managing multiple campus mailing lists</li>
+                    <li>Event organizers tracking food and logistics</li>
+                    <li>Anyone overwhelmed by event-related emails</li>
+                    <li>People who want to discover campus activities and food offerings</li>
+                </ul>
+
+                <h3>🔒 Privacy & Security</h3>
+                <p>
+                    Freed processes your emails locally and only stores necessary event data. Your email content is analyzed 
+                    by secure AI models and never stored permanently. The system uses OAuth2 for secure Gmail access and 
+                    follows best practices for data protection.
+                </p>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button onclick="showHomePage()" class="btn btn-primary">
+                        🎉 Start Discovering Events
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         let allEvents = [];
         let filteredEvents = [];
         let foodFilterActive = false;
+        let currentPage = 'home';
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            loadFilterOptions();
             loadEvents();
             setupEventListeners();
         });
@@ -422,10 +836,38 @@
         function setupEventListeners() {
             document.getElementById('dateFilter').addEventListener('change', applyFilters);
             document.getElementById('mailingListFilter').addEventListener('change', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('cuisineFilter').addEventListener('change', applyFilters);
+        }
+
+        async function loadFilterOptions() {
+            try {
+                const response = await fetch('/config');
+                const config = await response.json();
+                
+                // Load categories
+                const categoryFilter = document.getElementById('categoryFilter');
+                config.categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    categoryFilter.appendChild(option);
+                });
+                
+                // Load cuisines
+                const cuisineFilter = document.getElementById('cuisineFilter');
+                config.cuisines.forEach(cuisine => {
+                    const option = document.createElement('option');
+                    option.value = cuisine;
+                    option.textContent = cuisine;
+                    cuisineFilter.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading filter options:', error);
+            }
         }
         
         async function loadEvents() {
-            const maxResults = document.getElementById('maxResults').value;
             const loadBtn = document.getElementById('loadBtn');
             const status = document.getElementById('status');
             const eventsContainer = document.getElementById('eventsContainer');
@@ -434,28 +876,60 @@
             status.className = 'status hidden';
             eventsContainer.innerHTML = '';
             loadBtn.disabled = true;
-            loadBtn.textContent = '⏳ Loading...';
+            loadBtn.textContent = '⏳ Processing...';
+            
+            // Show detailed progress steps
+            await showStatus('🔄 Connecting to Gmail...', 'loading');
             
             try {
-                const response = await fetch(`/events/gg-events?max_results=${maxResults}&sort=desc`);
+                // Get filter values
+                const categoryFilter = document.getElementById('categoryFilter').value;
+                const cuisineFilter = document.getElementById('cuisineFilter').value;
+                
+                // Build query parameters - use maximum results
+                const params = new URLSearchParams();
+                params.append('max_results', '100');
+                params.append('sort', 'desc');
+                if (categoryFilter) params.append('category', categoryFilter);
+                if (cuisineFilter) params.append('cuisine', cuisineFilter);
+                
+                // Update status for each step
+                await showStatus('📧 Fetching mailing list emails...', 'loading');
+                
+                const response = await fetch(`/events/all?${params}`);
+                
+                await showStatus('🤖 Processing emails with AI...', 'loading');
+                
                 const data = await response.json();
                 
                 if (!response.ok) {
                     throw new Error(data.detail || 'Failed to load events');
                 }
                 
+                await showStatus('📊 Finalizing results...', 'loading');
+                
                 if (data.events && data.events.length > 0) {
                     allEvents = data.events;
                     filteredEvents = allEvents;
                     updateMailingListFilter();
                     applyFilters();
-                    showStatus(`Successfully loaded ${data.count} events from GG.Events!`, 'success');
+                    
+                    // Show detailed success message with stats
+                    const stats = data.stats || {};
+                    const llmCalls = stats.llm_calls_made || 0;
+                    const cacheHits = stats.cache_entries_count || 0;
+                    
+                    showStatus(
+                        `✅ Successfully loaded ${data.count} events from mailing lists! ` +
+                        `(AI calls: ${llmCalls}, cached: ${cacheHits})`, 
+                        'success'
+                    );
                 } else {
-                    showStatus('No events found in GG.Events emails.', 'error');
+                    showStatus('❌ No events found in mailing list emails.', 'error');
                 }
                 
             } catch (err) {
-                showStatus(`Error: ${err.message}`, 'error');
+                showStatus(`❌ Error: ${err.message}`, 'error');
             } finally {
                 loadBtn.disabled = false;
                 loadBtn.textContent = '🔄 Load Events';
@@ -481,6 +955,8 @@
         function applyFilters() {
             const dateFilter = document.getElementById('dateFilter').value;
             const mailingListFilter = document.getElementById('mailingListFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const cuisineFilter = document.getElementById('cuisineFilter').value;
             
             let filtered = allEvents;
             
@@ -494,6 +970,21 @@
                 filtered = filtered.filter(event => event.mailing_list === mailingListFilter);
             }
             
+            // Filter by category
+            if (categoryFilter) {
+                filtered = filtered.filter(event => event.category === categoryFilter);
+            }
+            
+            // Filter by cuisine
+            if (cuisineFilter) {
+                filtered = filtered.filter(event => {
+                    if (event.food && event.food.length > 0) {
+                        return event.food.some(foodItem => foodItem.cuisine === cuisineFilter);
+                    }
+                    return false;
+                });
+            }
+            
             // Filter by food
             if (foodFilterActive) {
                 filtered = filtered.filter(event => hasFood(event));
@@ -504,7 +995,12 @@
         }
         
         function hasFood(event) {
-            // Check food_type and food_quantity_hint
+            // Check new food structure
+            if (event.food && event.food.length > 0) {
+                return true;
+            }
+            
+            // Check legacy food_type and food_quantity_hint
             if (event.food_type || event.food_quantity_hint) {
                 return true;
             }
@@ -532,6 +1028,8 @@
         function clearFilters() {
             document.getElementById('dateFilter').value = '';
             document.getElementById('mailingListFilter').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('cuisineFilter').value = '';
             foodFilterActive = false;
             document.getElementById('foodBtn').classList.remove('active');
             document.getElementById('foodBtn').textContent = '🍕 Food Only';
@@ -636,8 +1134,25 @@
         function createBadges(event) {
             const badges = [];
             
+            if (event.category) {
+                badges.push(`<span class="badge badge-category">📋 ${event.category}</span>`);
+            }
+            
+            if (event.confidence && event.confidence.overall) {
+                badges.push(`<span class="badge badge-confidence">🎯 ${Math.round(event.confidence.overall * 100)}%</span>`);
+            }
+            
             if (hasFood(event)) {
                 badges.push('<span class="badge badge-food">🍕 Food</span>');
+            }
+            
+            // Add food breakdown if available
+            if (event.food && event.food.length > 0) {
+                event.food.forEach(foodItem => {
+                    if (foodItem.cuisine) {
+                        badges.push(`<span class="badge badge-cuisine">🍽️ ${foodItem.cuisine}</span>`);
+                    }
+                });
             }
             
             if (event.mailing_list) {
@@ -659,6 +1174,23 @@
                     <div class="detail-item">
                         <div class="detail-label">Description:</div>
                         <div class="detail-value">${event.description}</div>
+                    </div>
+                `;
+            }
+            
+            if (event.food && event.food.length > 0) {
+                details += `
+                    <div class="detail-item">
+                        <div class="detail-label">Food Details:</div>
+                        <div class="detail-value">
+                            ${event.food.map(foodItem => `
+                                <div style="margin-bottom: 8px; padding: 8px; background: var(--primary-dark); border-radius: 4px;">
+                                    <strong>${foodItem.name}</strong>
+                                    ${foodItem.quantity_hint ? `<br><small>${foodItem.quantity_hint}</small>` : ''}
+                                    ${foodItem.cuisine ? `<br><span class="badge badge-cuisine" style="margin-top: 4px; display: inline-block;">${foodItem.cuisine}</span>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
             }
@@ -701,6 +1233,22 @@
                 `;
             }
             
+            if (event.confidence) {
+                const confDetails = [];
+                if (event.confidence.category !== null) confDetails.push(`Category: ${Math.round(event.confidence.category * 100)}%`);
+                if (event.confidence.cuisine !== null) confDetails.push(`Cuisine: ${Math.round(event.confidence.cuisine * 100)}%`);
+                if (event.confidence.overall !== null) confDetails.push(`Overall: ${Math.round(event.confidence.overall * 100)}%`);
+                
+                if (confDetails.length > 0) {
+                    details += `
+                        <div class="detail-item">
+                            <div class="detail-label">Confidence Scores:</div>
+                            <div class="detail-value">${confDetails.join(' • ')}</div>
+                        </div>
+                    `;
+                }
+            }
+            
             if (event.mailing_list) {
                 details += `
                     <div class="detail-item">
@@ -737,6 +1285,44 @@
             const status = document.getElementById('status');
             status.textContent = message;
             status.className = `status ${type}`;
+            
+            // Add a small delay for loading messages to be visible
+            if (type === 'loading') {
+                return new Promise(resolve => setTimeout(resolve, 300));
+            }
+        }
+
+        // Navigation functions
+        function showHomePage() {
+            currentPage = 'home';
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('aboutPage').classList.remove('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const homeLink = document.querySelector('[data-page="home"]');
+            if (homeLink) homeLink.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showAboutPage() {
+            currentPage = 'about';
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('aboutPage').classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const aboutLink = document.querySelector('[data-page="about"]');
+            if (aboutLink) aboutLink.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
