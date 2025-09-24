@@ -1,220 +1,190 @@
-# Email Event Parser
+# Freed: Event and Food Finder
 
-A Python application that parses events from Gmail emails using LLM (Large Language Model) assistance. The system extracts event information, validates it against a strict schema, and provides both CLI and web interfaces for viewing and exporting events.
+🎉 **Discover campus events and delicious food from your mailing lists with AI-powered intelligence.**
 
-## Features
+Freed is a smart event discovery platform that automatically scans your Gmail for event emails from mailing lists, extracts key information using advanced AI, and presents everything in a beautiful, organized interface. Perfect for students and community members who want to stay on top of campus activities and food offerings.
 
-- **Gmail Integration**: Read-only access to Gmail emails via OAuth2
-- **Harvard OpenAI API**: Uses Harvard's OpenAI Community Developers API with $10/month credits
-- **LLM Parsing**: Uses OpenAI GPT-4o-mini to extract structured event data from email content
-- **Strict Validation**: Pydantic schema validation ensures data quality
-- **Post-processing**: Heuristics for time normalization, location cleanup, and food detection
-- **Calendar Export**: Generate ICS files for calendar applications
-- **Web Interface**: Simple HTML interface for browsing parsed events
-- **CLI Interface**: Command-line tool for batch processing
-- **GG.Events Support**: Specialized parsing for Harvard GG.Events mailing list
+## ✨ What Makes Freed Special
 
-## Quick Start
+- **🤖 AI-Powered Parsing**: Uses advanced language models to extract structured event data from unstructured emails
+- **🎯 Smart Categorization**: Automatically categorizes events (workshops, lectures, social events, etc.) with confidence scoring
+- **🍕 Food Detection**: Identifies food offerings, cuisines, and quantity hints from event descriptions
+- **📧 Mailing List Integration**: Seamlessly connects to your Gmail and processes emails from various mailing lists
+- **🎨 Modern Interface**: Beautiful dark mode design with intuitive navigation and real-time progress tracking
+- **🔍 Intelligent Filtering**: Filter events by date, category, cuisine, mailing list, and food availability
 
-### 1. Setup
+## 🚀 Quick Start
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd freed
+### Prerequisites
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+- Python 3.8+ installed on your system
+- Gmail account with mailing list subscriptions
+- Harvard OpenAI API access (for Harvard community members)
 
-# Install dependencies
-pip install -r requirements.txt
+### Installation
 
-# Copy environment template
-cp env.example .env
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/joshmysore/freed.git
+   cd freed
+   ```
 
-### 2. Configure Environment
+2. **Set up the environment**
+   ```bash
+   # Create virtual environment
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
+   pip install -r requirements.txt
+   ```
 
-Edit `.env` file with your credentials:
+3. **Configure your credentials**
+   ```bash
+   # Copy the example environment file
+   cp env.example .env
+   
+   # Edit .env with your API keys (see Configuration section below)
+   ```
 
-```bash
-# Google OAuth Credentials (required)
-GOOGLE_CLIENT_ID=your_client_id_here
-GOOGLE_CLIENT_SECRET=your_client_secret_here
+4. **Run Freed**
+   ```bash
+   # Start the application
+   cd app
+   OPENAI_API_KEY=your_api_key_here uvicorn server:app --host 0.0.0.0 --port 8080 --reload
+   
+   # Open your browser to http://localhost:8080
+   ```
 
-# OpenAI API Key (Harvard Community Developers)
-# Get from: https://go.apis.huit.harvard.edu/ (Harvard API Portal)
-# 1. Log in with HarvardKey
-# 2. Go to "Apps" in the dropdown menu
-# 3. Click "+NEW APP" 
-# 4. Enable "AI Services - OpenAI API for Community Developers"
-# 5. Copy the generated API key
-OPENAI_API_KEY=your_harvard_api_key_here
+## ⚙️ Configuration
 
-# Optional: Customize Gmail search query
-GMAIL_QUERY=newer_than:14d (subject:invite OR subject:event OR subject:seminar OR subject:talk OR subject:workshop OR subject:session)
-```
+### Required: OpenAI API Key (Harvard Community)
 
-### 3. Get API Credentials
-
-#### Google OAuth Credentials
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Enable Gmail API
-4. Go to **APIs & Services > Credentials**
-5. Click **Create Credentials > OAuth 2.0 Client ID**
-6. Choose **Desktop application** as the application type
-7. Download the JSON file and rename it to `credentials.json`
-8. Place `credentials.json` in the project root
-9. Extract the `client_id` and `client_secret` from the JSON file
-10. Add them to your `.env` file
-
-#### Harvard OpenAI API Key
-1. Go to [Harvard API Portal](https://go.apis.huit.harvard.edu/)
+1. Visit [Harvard API Portal](https://go.apis.huit.harvard.edu/)
 2. Log in with your HarvardKey
-3. Click on your username dropdown → "Apps"
-4. Click "+NEW APP"
-5. Enter a unique app name (e.g., "Email Event Parser - [your initials]")
-6. Enable "AI Services - OpenAI API for Community Developers"
-7. Click "SAVE" and copy the generated API key
-8. Add the API key to your `.env` file
+3. Go to "Apps" → "+NEW APP"
+4. Enable "AI Services - OpenAI API for Community Developers"
+5. Copy your API key and add it to `.env`:
+   ```bash
+   OPENAI_API_KEY=your_harvard_api_key_here
+   ```
 
-### 4. Run the Application
+### Required: Gmail OAuth Setup
 
-```bash
-# Activate virtual environment
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project and enable Gmail API
+3. Create OAuth 2.0 credentials for a desktop application
+4. Download the JSON file and rename it to `credentials.json`
+5. Place `credentials.json` in the project root
 
-# Start the web interface
-python src/app.py
-
-# Or run CLI scan
-python src/cli.py --help
-```
-
-## Usage
+## 🎯 How to Use
 
 ### Web Interface
 
-1. Start the server: `make run`
-2. Open http://localhost:8000 in your browser
-3. Configure search query and click "Scan Emails"
-4. View parsed events with highlighted fields
-5. Download ICS files for calendar import
+1. **Launch Freed**: Navigate to http://localhost:8080
+2. **Browse Events**: Click "Load Events" to process your mailing list emails
+3. **Filter Results**: Use the filter options to find specific types of events or food
+4. **View Details**: Click on any event to see full details, food information, and links
+5. **Learn More**: Check the "About" page to understand Freed's capabilities
 
-### CLI Interface
+### Key Features
+
+- **📊 Real-time Progress**: Watch as Freed processes your emails with detailed status updates
+- **🏷️ Smart Badges**: See event categories, confidence scores, and food types at a glance
+- **🔍 Advanced Filters**: Find exactly what you're looking for with multiple filter options
+- **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+
+## 🍕 Event Information Extracted
+
+Freed intelligently extracts and organizes:
+
+- **Basic Info**: Title, description, date, time, location
+- **Organization**: Event organizer and contact information
+- **Food Details**: Specific food items, cuisines, and quantity hints
+- **Categories**: Event type (workshop, lecture, social, etc.)
+- **Links**: Registration URLs and relevant web links
+- **Source**: Original mailing list and email subject
+
+## 🛠️ Technical Details
+
+### Architecture
+
+- **Backend**: FastAPI with Python 3.8+
+- **AI Processing**: OpenAI GPT-4o-mini via Harvard API
+- **Email Integration**: Gmail API with OAuth2 authentication
+- **Frontend**: Modern HTML5/CSS3/JavaScript with responsive design
+- **Data Validation**: Pydantic schemas for robust data handling
+
+### Supported Mailing Lists
+
+Freed automatically processes emails from:
+- GG.Events (Harvard)
+- HCS Discuss
+- Pfoho mailing lists
+- CNUGS
+- And many more campus mailing lists
+
+## 🔒 Privacy & Security
+
+- **Read-Only Access**: Freed only reads your emails, never modifies or deletes anything
+- **Local Processing**: Your email content is processed locally and never stored permanently
+- **Secure Authentication**: Uses OAuth2 for secure Gmail access
+- **API Efficiency**: Intelligent caching reduces API calls and costs
+
+## 🚧 Development
+
+### Project Structure
+
+```
+freed/
+├── app/                    # Main application code
+│   ├── server.py          # FastAPI web server
+│   ├── gmail_client.py    # Gmail integration
+│   ├── parser_llm.py      # AI parsing logic
+│   └── views/             # Web interface
+├── src/                   # Legacy code (backup)
+├── backup_v1/            # Previous version backup
+└── requirements.txt       # Python dependencies
+```
+
+### Running in Development
 
 ```bash
-# Activate virtual environment first
-source venv/bin/activate
+# Install development dependencies
+pip install -r requirements.txt
 
-# Basic scan with default query
-python src/cli.py
-
-# Custom query
-python src/cli.py --query "from:events@university.edu" --max-results 5
-
-# Generate ICS files
-python src/cli.py --ics
-
-# JSON output
-python src/cli.py --json
+# Start with auto-reload
+cd app
+uvicorn server:app --reload --port 8080
 ```
 
-### API Endpoints
+## 🤝 Contributing
 
-- `GET /health` - Health check
-- `GET /events/scan?query=...&max_results=10` - Scan and parse events
-- `GET /events/gg-events?max_results=50` - Parse GG.Events emails specifically
-- `POST /ics` - Generate ICS file from event data
+We welcome contributions! Please:
 
-## Project Structure
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with proper tests
+4. Submit a pull request with a clear description
 
-```
-.
-├─ src/
-│  ├─ app.py                # FastAPI application
-│  ├─ cli.py                # CLI interface
-│  ├─ gmail_client.py       # Gmail API integration
-│  ├─ parser_llm.py         # LLM parsing
-│  ├─ schema.py             # Pydantic models
-│  ├─ postprocess.py        # Post-processing heuristics
-│  ├─ calendar_ics.py       # ICS generation
-│  ├─ views/
-│  │  └─ index.html         # Web interface
-│  └─ utils.py              # Utilities
-├─ tests/                   # Test files
-├─ prompts/                 # LLM prompt templates
-├─ docs/                    # Documentation
-└─ requirements.txt         # Dependencies
-```
+## 📄 License
 
-## Development
+This project is open source. Please check the license file for details.
 
-### Running Tests
+## 🙋‍♂️ Support
 
-```bash
-# Activate virtual environment
-source venv/bin/activate
+Having trouble? Here are some common solutions:
 
-# Run all tests
-python -m pytest tests/ -v
+- **Gmail Connection Issues**: Ensure your `credentials.json` is in the project root and properly configured
+- **API Errors**: Check that your OpenAI API key is valid and has sufficient credits
+- **No Events Found**: Verify you have emails in supported mailing lists within the last 14 days
 
-# Run specific test file
-python -m pytest tests/test_schema.py -v
-```
+## 🌟 Acknowledgments
 
-### Code Formatting
+- Built for the Harvard community with love
+- Powered by OpenAI's advanced language models
+- Designed with modern web technologies and best practices
 
-```bash
-# Install formatting tools
-pip install black isort
+---
 
-# Format code
-black src/ tests/
-isort src/ tests/
-```
-
-### Linting
-
-```bash
-# Install linting tool
-pip install ruff
-
-# Lint code
-ruff check src/ tests/
-
-## Event Schema
-
-Events are parsed into a strict JSON schema with the following fields:
-
-- `title` (required): Event name
-- `date_start` (required): Date in YYYY-MM-DD format
-- `time_start`: Start time in HH:MM format
-- `time_end`: End time in HH:MM format
-- `timezone`: IANA timezone (default: America/New_York)
-- `location`: Event location
-- `organizer`: Event organizer
-- `description`: Event description
-- `urls`: List of relevant URLs
-- `food_type`: Type of food provided
-- `food_quantity_hint`: Food quantity information
-- `contacts`: List of contact information
-- `source_message_id`: Gmail message ID
-- `source_subject`: Email subject
-
-## Roadmap
-
-See [PROJECT.md](docs/PROJECT.md) for detailed roadmap and future features.
-
-## Contributing
-
-1. Follow conventional commit format
-2. Update `docs/UPDATES.md` for any changes
-3. Add tests for new features
-4. Ensure code passes linting and formatting
-
-## License
-
-[Add your license here]
+**Ready to discover your next great event? Launch Freed and let AI help you stay connected to campus life! 🎉**
