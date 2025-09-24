@@ -13,7 +13,7 @@ For each update, include:
 
 ---
 
-## 2024-12-19 - Initial MVP Implementation
+## 2025-09-19 - Initial MVP Implementation
 
 **Summary**: Complete MVP implementation with all core components
 
@@ -49,7 +49,7 @@ For each update, include:
 
 ---
 
-## 2024-12-19 - GG.Events Integration and Mailing List Support
+## 2025-09-22 - GG.Events Integration and Mailing List Support
 
 **Summary**: Added specialized support for GG.Events mailing list emails with mailing list extraction and enhanced frontend
 
@@ -80,7 +80,7 @@ For each update, include:
 
 ---
 
-## 2024-12-19 - Parsing Analysis and 14-Day Search Implementation
+## 2024-09-22 - Parsing Analysis and 14-Day Search Implementation
 
 **Summary**: Expanded search to 14 days, analyzed parsing issues, and improved system robustness
 
@@ -125,7 +125,7 @@ For each update, include:
 
 ---
 
-## 2025-09-19 - Harvard OpenAI API Integration
+## 2025-09-22 - Harvard OpenAI API Integration
 
 **Summary**: Successfully integrated Harvard's OpenAI Community Developers API with $10/month credits
 
@@ -156,6 +156,52 @@ For each update, include:
 - API key now uses Harvard's community developers program
 
 **Tests added**: API connection test verified successful integration
+
+---
+
+## 2025-09-24 - Google Calendar Integration and Email Parsing Improvements
+
+**Summary**: Major feature addition with direct Google Calendar integration, improved email parsing, and enhanced UI/UX
+
+**Affected files**:
+- `app/server.py` - Added Google Calendar ICS endpoints and debug endpoints
+- `app/gmail_client.py` - Enhanced email body extraction for multipart/related structures
+- `app/config.py` - Added food-related keywords to event detection patterns
+- `src/views/index.html` - Complete Google Calendar integration and UI improvements
+- `app/calendar_ics.py` - Existing ICS generation functionality (leveraged)
+
+**Features implemented**:
+- **Direct Google Calendar Integration**: One-click "Add to Calendar" buttons on all events
+- **Enhanced Email Parsing**: Improved multipart email body extraction for complex email structures
+- **Better Event Detection**: Added food-related keywords (bread, community, join, etc.) to catch more events
+- **Fixed Date Display**: Proper Today/Tomorrow grouping in UI with timezone handling
+- **Improved PFOHO Parsing**: Fixed "Bread Stein" email parsing with full content extraction
+- **Enhanced Debug Capabilities**: Added debug endpoints for email analysis and troubleshooting
+- **Better Error Handling**: Improved JavaScript error handling and user feedback
+
+**Technical improvements**:
+- **Email Body Extraction**: Fixed `_extract_text_from_payload()` to handle `multipart/related` structures
+- **JavaScript Fixes**: Resolved variable naming conflicts in `addToGoogleCalendar()` function
+- **Date Formatting**: Enhanced `formatDate()` function with proper timezone handling
+- **Google Calendar URLs**: Robust date/time formatting for Google Calendar integration
+- **Event Filtering**: Enhanced mailing list query construction for better email discovery
+
+**Key fixes resolved**:
+- **PFOHO Email Issue**: "[PFOHO] Bread Stein TOMORROW (9/24)@9:30" now parses correctly with full content
+- **Date Display Bug**: Events now show under correct date groups (Today/Tomorrow/Future)
+- **Google Calendar Button**: Fixed non-functional calendar integration with proper URL generation
+- **Email Content**: Full email body extraction instead of just mailing list footers
+
+**Migration notes**: 
+- Google Calendar integration replaces ICS download functionality
+- Enhanced email parsing requires no configuration changes
+- UI improvements are backward compatible
+- Debug endpoints available for troubleshooting
+
+**Tests added**: 
+- Google Calendar URL generation validation
+- Email body extraction testing with multipart structures
+- Date formatting and timezone handling verification
 
 ---
 
