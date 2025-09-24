@@ -301,6 +301,19 @@
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
         }
 
+        .btn-calendar {
+            background: var(--accent-orange);
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .btn-calendar:hover {
+            background: var(--accent-orange-light);
+            transform: translateY(-1px);
+        }
+
         /* Status Messages */
         .status {
             padding: 1rem 1.5rem;
@@ -394,6 +407,12 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
+        }
+
+        .event-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .event-title {
@@ -1086,16 +1105,23 @@
         }
         
         function formatDate(dateString) {
-            const date = new Date(dateString);
+            // Create date objects in local timezone for comparison
             const today = new Date();
             const tomorrow = new Date(today);
             tomorrow.setDate(tomorrow.getDate() + 1);
             
-            if (dateString === today.toISOString().split('T')[0]) {
+            // Get date strings in YYYY-MM-DD format for comparison
+            const todayStr = today.toISOString().split('T')[0];
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            
+            if (dateString === todayStr) {
                 return 'Today';
-            } else if (dateString === tomorrow.toISOString().split('T')[0]) {
+            } else if (dateString === tomorrowStr) {
                 return 'Tomorrow';
             } else {
+                // Parse the date string and format it
+                const [year, month, day] = dateString.split('-');
+                const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
                 return date.toLocaleDateString('en-US', { 
                     weekday: 'long', 
                     year: 'numeric', 
@@ -1110,10 +1136,15 @@
             const badges = createBadges(event);
             
             return `
-                <div class="event-card" onclick="toggleEvent(this)" data-event-id="${event.source_message_id}">
+                <div class="event-card" data-event-id="${event.source_message_id}">
                     <div class="event-header">
-                        <div class="event-title">${event.title}</div>
-                        <div class="expand-icon">▼</div>
+                        <div class="event-title" onclick="toggleEvent(this.closest('.event-card'))">${event.title}</div>
+                        <div class="event-actions">
+                            <button onclick="addToGoogleCalendar('${event.source_message_id}', '${event.title.replace(/'/g, "\\'")}')" class="btn btn-calendar" title="Add to Google Calendar">
+                                📅 Add to Calendar
+                            </button>
+                            <div class="expand-icon" onclick="toggleEvent(this.closest('.event-card'))">▼</div>
+                        </div>
                     </div>
                     <div class="event-time">${timeStr}</div>
                     <div class="event-location">${event.location || 'Location TBD'}</div>
@@ -1279,6 +1310,139 @@
         
         function toggleEvent(card) {
             card.classList.toggle('expanded');
+        }
+
+        async function addToGoogleCalendar(eventId, eventTitle) {
+            try {
+                // Show loading state
+                const button = document.querySelector(`[onclick*="${eventId}"]`);
+                if (button) {
+                    button.innerHTML = '⏳ Loading...';
+                    button.disabled = true;
+                }
+
+                // Get event details from the current events
+                const eventData = allEvents.find(e => e.source_message_id === eventId);
+                if (!eventData) {
+                    throw new Error('Event not found');
+                }
+
+                // Build Google Calendar URL
+                const googleCalendarUrl = buildGoogleCalendarUrl(eventData);
+                
+                // Open Google Calendar in new tab
+                window.open(googleCalendarUrl, '_blank');
+
+                // Show success message
+                showStatus(`✅ Opening Google Calendar for: ${eventTitle}`, 'success');
+
+            } catch (error) {
+                console.error('Error opening Google Calendar:', error);
+                showStatus(`❌ Error opening Google Calendar: ${error.message}`, 'error');
+            } finally {
+                // Reset button state
+                const button = document.querySelector(`[onclick*="${eventId}"]`);
+                if (button) {
+                    button.innerHTML = '📅 Add to Calendar';
+                    button.disabled = false;
+                }
+            }
+        }
+
+        function buildGoogleCalendarUrl(event) {
+            // Format date and time for Google Calendar
+            const formatDate = (dateStr, timeStr) => {
+                if (!dateStr) return '';
+                
+                // Parse date (YYYY-MM-DD format)
+                const [year, month, day] = dateStr.split('-');
+                
+                if (!timeStr) {
+                    // All-day event
+                    return `${year}${month}${day}`;
+                }
+                
+                // Parse time (HH:MM format)
+                const [hour, minute] = timeStr.split(':');
+                
+                // Create date in local timezone
+                const date = new Date(year, month - 1, day, parseInt(hour), parseInt(minute));
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+
+            const formatDateTime = (dateStr, timeStr, endTimeStr) => {
+                if (!dateStr) return '';
+                
+                const [year, month, day] = dateStr.split('-');
+                
+                if (!timeStr) {
+                    // All-day event - end date is next day
+                    const endDate = new Date(year, month - 1, parseInt(day) + 1);
+                    return {
+                        start: `${year}${month}${day}`,
+                        end: endDate.toISOString().split('T')[0].replace(/-/g, '')
+                    };
+                }
+                
+                // Parse time
+                const [hour, minute] = timeStr.split(':');
+                
+                // Create start date
+                const startDate = new Date(year, month - 1, day, parseInt(hour), parseInt(minute));
+                
+                // Calculate end date (default 1 hour if no end time)
+                let endDate;
+                if (endTimeStr) {
+                    const [endHour, endMinute] = endTimeStr.split(':');
+                    endDate = new Date(year, month - 1, day, parseInt(endHour), parseInt(endMinute));
+                } else {
+                    endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
+                }
+                
+                return {
+                    start: startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+                    end: endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+                };
+            };
+
+            // Build description with all event details
+            let description = '';
+            if (event.description) {
+                description += event.description + '\n\n';
+            }
+            
+            if (event.food && event.food.length > 0) {
+                description += 'Food: ';
+                description += event.food.map(item => {
+                    let foodStr = item.name;
+                    if (item.quantity_hint) foodStr += ` (${item.quantity_hint})`;
+                    if (item.cuisine) foodStr += ` [${item.cuisine}]`;
+                    return foodStr;
+                }).join(', ') + '\n\n';
+            }
+            
+            if (event.urls && event.urls.length > 0) {
+                description += 'Links: ' + event.urls.join(', ') + '\n\n';
+            }
+            
+            if (event.organizer) {
+                description += `Organizer: ${event.organizer}\n\n`;
+            }
+            
+            description += `Source: ${event.mailing_list || 'Mailing List'}`;
+
+            // Build the Google Calendar URL
+            const dateTimeRange = formatDateTime(event.date_start, event.time_start, event.time_end);
+            const params = new URLSearchParams({
+                action: 'TEMPLATE',
+                text: event.title,
+                dates: dateTimeRange.start + '/' + dateTimeRange.end,
+                details: description,
+                location: event.location || '',
+                trp: 'false'
+            });
+
+            return `https://calendar.google.com/calendar/render?${params.toString()}`;
         }
         
         function showStatus(message, type) {

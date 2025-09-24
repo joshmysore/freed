@@ -100,7 +100,11 @@ EVENT_KEYWORD_PATTERNS = [
     'info session', 'kickoff', 'launch', 'orientation', 'show', 'comedy',
     'performance', 'concert', 'theater', 'theatre', 'movie', 'film',
     'screening', 'demo', 'demonstration', 'tour', 'visit', 'open house',
-    'mixer', 'networking', 'social', 'hangout', 'get together'
+    'mixer', 'networking', 'social', 'hangout', 'get together',
+    # Food-related events
+    'bread', 'food', 'snack', 'treat', 'refreshments', 'catering',
+    'pizza', 'cookies', 'cake', 'coffee', 'tea', 'drinks',
+    'community', 'join', 'please join', 'come', 'everyone'
 ]
 
 LOCATION_KEYWORD_PATTERNS = [

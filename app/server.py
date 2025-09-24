@@ -402,6 +402,58 @@ async def generate_ics(event_data: dict):
         logger.error(f"Error generating ICS: {e}")
         raise HTTPException(status_code=400, detail=f"Error generating ICS: {str(e)}")
 
+@app.get("/ics/{event_id}")
+async def generate_ics_by_id(event_id: str):
+    """
+    Generate ICS calendar file for a specific event by ID.
+    
+    Args:
+        event_id: Event message ID
+        
+    Returns:
+        ICS file content
+    """
+    try:
+        # Get all events and find the one with matching ID
+        gmail, llm, post, store, config = get_components()
+        
+        if not gmail or not llm:
+            raise HTTPException(status_code=500, detail="Required components not available")
+        
+        # Get events and find the specific one
+        emails = gmail.get_mailing_list_emails(100)
+        events = llm.parse_emails_batch(emails)
+        
+        # Find event by source_message_id
+        target_event = None
+        for event in events:
+            if event.source_message_id == event_id:
+                target_event = event
+                break
+        
+        if not target_event:
+            raise HTTPException(status_code=404, detail="Event not found")
+        
+        # Generate ICS content
+        ics_content = ICSGenerator.generate_ics([target_event])
+        
+        # Create filename from event title
+        safe_title = "".join(c for c in target_event.title if c.isalnum() or c in (' ', '-', '_')).rstrip()
+        safe_title = safe_title[:50]  # Limit length
+        filename = f"{safe_title}.ics" if safe_title else "event.ics"
+        
+        return Response(
+            content=ics_content,
+            media_type="text/calendar",
+            headers={"Content-Disposition": f"attachment; filename={filename}"}
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error generating ICS for event {event_id}: {e}")
+        raise HTTPException(status_code=500, detail=f"Error generating ICS: {str(e)}")
+
 @app.get("/events/sample")
 async def get_sample_events():
     """Get sample events for testing the UI."""
@@ -574,45 +626,46 @@ async def debug_gating():
 
 @app.get("/debug/emails")
 async def debug_emails():
-    """Debug actual email content from GG.Events."""
+    """Debug actual email content from mailing lists."""
     try:
         gmail, llm, post, store, config = get_components()
         
         if not gmail:
             return {"error": "Gmail client not available"}
         
-        # Get GG.Events emails
-        emails = gmail.get_gg_events_emails(max_results=3)
+        # Get mailing list emails
+        emails = gmail.get_mailing_list_emails(max_results=10)
         
         if not emails:
-            return {"error": "No GG.Events emails found"}
+            return {"error": "No mailing list emails found"}
         
-        # Parse first email
-        first_email = emails[0]
-        
-        # Check gating logic
-        is_likely_event = llm._is_event_like(first_email['body'], first_email['subject'])
-        
-        parsed = llm.parse_email(
-            email_content=first_email['body'],
-            message_id=first_email['message_id'],
-            subject=first_email['subject'],
-            received_at=first_email['date']
-        )
+        # Check each email for gating and parsing
+        results = []
+        for email in emails[:5]:  # Check first 5 emails
+            is_likely_event = llm._is_event_like(email['body'], email['subject'])
+            
+            parsed = llm.parse_email(
+                email_content=email['body'],
+                message_id=email['message_id'],
+                subject=email['subject'],
+                received_at=email['date']
+            )
+            
+            results.append({
+                "message_id": email['message_id'],
+                "subject": email['subject'],
+                "sender": email['sender'],
+                "date": email['date'],
+                "body_length": len(email['body']),
+                "body_preview": email['body'][:300] + "..." if len(email['body']) > 300 else email['body'],
+                "gating_passed": is_likely_event,
+                "parsing_successful": parsed is not None,
+                "parsed_title": parsed.title if parsed else None
+            })
         
         return {
             "total_emails_found": len(emails),
-            "first_email": {
-                "message_id": first_email['message_id'],
-                "subject": first_email['subject'],
-                "sender": first_email['sender'],
-                "date": first_email['date'],
-                "body_length": len(first_email['body']),
-                "body_preview": first_email['body'][:200] + "..." if len(first_email['body']) > 200 else first_email['body']
-            },
-            "parsed_result": parsed.model_dump() if parsed else None,
-            "parsing_successful": parsed is not None,
-            "gating_passed": is_likely_event
+            "checked_emails": results
         }
         
     except Exception as e:
@@ -1033,6 +1086,55 @@ def enhance_ui_with_v2_features(html_content):
     )
     
     return enhanced_html
+
+@app.get("/debug/email/{message_id}")
+async def debug_single_email(message_id: str):
+    """Debug a single email by message ID to see full structure."""
+    try:
+        gmail, llm, post, store, config = get_components()
+        
+        if not gmail:
+            return {"error": "Gmail client not available"}
+        
+        # Get the raw email message
+        try:
+            message = gmail.service.users().messages().get(
+                userId='me', id=message_id, format='full'
+            ).execute()
+            
+            # Extract headers
+            headers = message['payload'].get('headers', [])
+            subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
+            sender = next((h['value'] for h in headers if h['name'] == 'From'), '')
+            date = next((h['value'] for h in headers if h['name'] == 'Date'), '')
+            
+            # Extract body using the same method as the client
+            body = gmail._extract_text_from_payload(message['payload'])
+            
+            # Also try to get raw payload structure
+            payload_info = {
+                "mimeType": message['payload'].get('mimeType'),
+                "has_parts": 'parts' in message['payload'],
+                "parts_count": len(message['payload'].get('parts', [])),
+                "parts_types": [part.get('mimeType') for part in message['payload'].get('parts', [])]
+            }
+            
+            return {
+                "message_id": message_id,
+                "subject": subject,
+                "sender": sender,
+                "date": date,
+                "body_extracted": body,
+                "body_length": len(body),
+                "payload_info": payload_info,
+                "raw_payload_keys": list(message['payload'].keys())
+            }
+            
+        except Exception as e:
+            return {"error": f"Error getting email: {str(e)}"}
+            
+    except Exception as e:
+        return {"error": f"Debug failed: {str(e)}"}
 
 if __name__ == "__main__":
     import uvicorn

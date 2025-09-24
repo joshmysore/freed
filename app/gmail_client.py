@@ -134,7 +134,7 @@ class GmailClient:
                     data = part['body'].get('data')
                     if data:
                         body += base64.urlsafe_b64decode(data).decode('utf-8', errors='ignore')
-                elif part['mimeType'] == 'multipart/alternative':
+                elif part['mimeType'] in ['multipart/alternative', 'multipart/related', 'multipart/mixed']:
                     # Recursively extract from multipart
                     body += self._extract_text_from_payload(part)
         else:
